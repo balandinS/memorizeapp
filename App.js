@@ -12,7 +12,6 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
 
@@ -21,7 +20,7 @@ const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
        <View style={styles.statusBarBG} />
-          <StatusBar />
+          <StatusBar backgroundColor={'white'} translucent={false} hidden={false} barStyle="dark-content" />
     </View>
   );
 };
