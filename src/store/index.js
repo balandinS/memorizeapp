@@ -9,7 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorage
+    storage: AsyncStorage,
+    whitelist: ['LoginReducer']
 }
 const persistedReducer = persistReducer(persistConfig, reduces)
 
