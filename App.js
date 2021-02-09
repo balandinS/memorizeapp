@@ -18,7 +18,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import ReduxStore from './src/store';
-
+import Router from './src/routers'
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
@@ -33,6 +33,7 @@ const App: () => React$Node = () => {
         <PersistGate loading={null} persistor={ReduxStore.persistor}>
           <SafeAreaView style={styles.safeTop} />
           <SafeAreaView style={styles.safeBottom}>
+          <Router />
           </SafeAreaView>
         </PersistGate>
       </Provider>
