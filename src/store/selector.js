@@ -1,1 +1,1 @@
-export const isLoginSelector = (state) => state.LoginReducer
+export const userInfoSelector = (state) => state.LoginReducer

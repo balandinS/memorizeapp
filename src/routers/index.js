@@ -9,12 +9,29 @@ import { FadeInOutAnimation } from './config'
 
 import {SignupScreen, SinginScreen} from '../screen'
 import AppStack from './AppStack'
-import { isLoginSelector } from '../store/selector'
-
+import { userInfoSelector } from '../store/selector'
+import {signinAction} from '../store/login/LoginAction'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const RootStack = createStackNavigator();
 
 const RootNavigator = () => {
-   const userInfo = useSelector(isLoginSelector)
+    const userInfo = useSelector(userInfoSelector);
+    const dispatch = useDispatch();
+    useEffect(() => {
+    //   if (userInfo.userToken == null) {
+    //     dispatch(
+    //       signinAction({
+    //         id: 'dfdf',
+    //         name: 'addad',
+    //         avatar: 'adadad',
+    //         isLogin: true,
+    //         signWith: 'asdd',
+    //       }),
+    //     );
+    //   }
+
+    });
+   
     return(
         <RootStack.Navigator
          headerMode="float"

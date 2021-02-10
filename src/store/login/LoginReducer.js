@@ -1,5 +1,5 @@
 import {SIGNUP, SIGNOUT, SIGNIN, EXIST_USER} from './LoginTypes';
-
+import { REHYDRATE } from 'redux-persist';
 const intailState = {
   userToken: null,
   userName: '',
@@ -10,6 +10,11 @@ const intailState = {
 
 export default (state = intailState, action) => {
   switch (action.type) {
+
+    case REHYDRATE:
+      return {
+       ...action.payload.LoginReducer 
+      };
     case SIGNIN:
       return {
         userToken: action.payload.id,
