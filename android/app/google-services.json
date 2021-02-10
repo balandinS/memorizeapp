@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "226509016454",
+    "project_id": "memoriesapp-fc1ea1",
+    "storage_bucket": "memoriesapp-fc1ea1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226509016454:android:9336b7687dae3d2d94f007",
+        "android_client_info": {
+          "package_name": "com.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226509016454-l8kpi3hfrjsro677ei9epevtvka0pqrg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileapp",
+            "certificate_hash": "dde9cbd8dcfe993ee3efd7315bc37ff8b8d0b1ab"
+          }
+        },
+        {
+          "client_id": "226509016454-8ppds54t8q8kb78f3cr44upf2niv8q81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbOUjvhlHdek16NCODZL-cpbBpOoGnlwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226509016454-8ppds54t8q8kb78f3cr44upf2niv8q81.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "226509016454-2v43ogfln0svej89u5eab0988m170lce.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.mobileapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
