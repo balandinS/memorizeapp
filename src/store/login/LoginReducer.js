@@ -13,7 +13,7 @@ export default (state = intailState, action) => {
 
     case REHYDRATE:
       return {
-       ...action.payload.LoginReducer 
+       ...action?.payload?.LoginReducer 
       };
     case SIGNIN:
       return {
