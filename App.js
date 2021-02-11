@@ -6,20 +6,30 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   StatusBar,
+  Alert
 } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import ReduxStore from './src/store';
 import Router from './src/routers'
 const App: () => React$Node = () => {
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.statusBarBG} />
