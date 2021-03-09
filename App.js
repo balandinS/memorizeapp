@@ -34,7 +34,7 @@ const App: () => React$Node = () => {
     <View style={styles.container}>
       <View style={styles.statusBarBG} />
       <StatusBar
-        backgroundColor={'white'}
+        backgroundColor='rgb(229, 222, 216)'
         translucent={false}
         hidden={false}
         barStyle="dark-content"
@@ -54,7 +54,7 @@ const App: () => React$Node = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(229, 222, 216)',
   },
   statusBarBG: {
     position: 'absolute',
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   safeTop: {
     flex: 0,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(229, 222, 216)',
   },
   safeBottom: {
     flex: 1,
