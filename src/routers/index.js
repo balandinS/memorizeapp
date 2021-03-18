@@ -1,11 +1,10 @@
 import React, { useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { getStoredState } from 'redux-persist'
 import { navigationRef } from './rootNavigation'
 import  * as TYPES  from './types'
-import { FadeInOutAnimation } from './config'
+import { FadeInOutAnimation, signupOptionNavigate } from './config'
 
 import {SignupScreen, SinginScreen} from '../screen'
 import AppStack from './AppStack'
@@ -24,10 +23,10 @@ const RootNavigator = () => {
          headerMode="float"
          screenOptions={{...FadeInOutAnimation}}
         >
-             { userInfo.userToken != null ? (
+             { userInfo.userToken == null ? (
                 <>
                    <RootStack.Screen name={TYPES.SIGNIN} options={{headerShown: false}} component={SinginScreen}/>
-                   <RootStack.Screen name={TYPES.SIGNUP} component={SignupScreen}/>
+                   <RootStack.Screen name={TYPES.SIGNUP} options={signupOptionNavigate} component={SignupScreen}/>
                 </>
              ):(
                 <>
