@@ -8,4 +8,8 @@ export function navigate(name, params) {
   navigationRef.current?.navigate(name, params);
 }
 
+export function goBack() {
+  navigationRef.current?.goBack();
+}
+
 // add other navigation functions that you need and export them
