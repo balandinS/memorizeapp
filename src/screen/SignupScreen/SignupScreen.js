@@ -8,10 +8,11 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {COLORS, SIGNUP_SCREEN_CONTENT} from '../../utilities/constans';
 import {signupScheme} from '../../component/InputText/validationSchema';
 import { useNavigation } from '@react-navigation/native';
+import { useColorSafeArea } from '../../utilities/hooks'
 
 const SignupScreen = (props) => {
+  useColorSafeArea(COLORS.beige)
     const navigation = useNavigation();
-    const handleSignup = () => navigation.navigate(SIGNUP)
     return (
       <View style={styles.container}>
         <View style={styles.containerTitle}>

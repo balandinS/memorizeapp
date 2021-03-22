@@ -1,6 +1,19 @@
-import { useEffect, useRef} from 'react';
-import { Animated,  Easing } from 'react-native'
-
+import { useEffect, useRef, useCallback, useState} from 'react';
+import { Animated,  Easing } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fillSafeAreaColor } from '../store/ui/UiAction'
+import { colorSafeAreaSelector } from '../store/selector'
+import * as STEPS from '../utilities/constans'
+//Fill color Safe area 
+export function useColorSafeArea(color){
+   const dispatch = useDispatch()
+   const colorSafeAre = useSelector(colorSafeAreaSelector)
+   const colored = useCallback(() => dispatch(fillSafeAreaColor(color)), [colorSafeAre])
+   useEffect(() => {
+       colored()
+   }, [colorSafeAre])
+}
+//opacity anime
 export function useFadeAnime() {
     const fadeAnim = useRef(new Animated.Value(0)).current;
     
@@ -15,7 +28,7 @@ export function useFadeAnime() {
 
     return fadeAnim
 }
-
+// traslate x anime
 export function useTranslateAnime() {
     const translateAnime = useRef(new Animated.Value(-30)).current;
     useEffect(() => {
@@ -29,4 +42,25 @@ export function useTranslateAnime() {
     })
 
     return translateAnime
+}
+// this hook helps control steps for user  
+export function useSteps(data){
+    const [steps, updateStep] = useState({
+        currentStepIndex: 0,
+        data
+    })
+    const stepUp = () => {
+        const index = steps.currentStepIndex;
+        if(steps.data.length - 1 === index) {
+            return null
+        }
+
+        const oldData = [...steps.data];
+        oldData[index].done = true
+        updateStep({
+            currentStepIndex: index + 1,
+            data: oldData,
+        });
+    }
+  return [ steps , stepUp ]
 }

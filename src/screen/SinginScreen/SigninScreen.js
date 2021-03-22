@@ -8,10 +8,15 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {COLORS, SIGNIN_SCREEN_CONTENT} from '../../utilities/constans';
 import {signinScheme} from '../../component/InputText/validationSchema';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP } from '../../routers/types'
-const SigninScreen = (props) => {
+import { SIGNUP, FORGOT_PASSWORD } from '../../routers/types'
+import { useColorSafeArea } from '../../utilities/hooks'
+
+const SigninScreen = (props) => { 
   const navigation = useNavigation();
   const handleSignup = () => navigation.navigate(SIGNUP)
+  const handleForgotPassword = () => navigation.navigate(FORGOT_PASSWORD)
+  useColorSafeArea(COLORS.beige)
+
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -57,6 +62,7 @@ const SigninScreen = (props) => {
                   <Input
                     label="Password"
                     isPassword
+                    handleForgotPassword={handleForgotPassword}
                     screenName = {props.route.name}
                     onChangeText={handleChange('password')}
                     onEndEditing={() => setFieldTouched('password')}
@@ -83,7 +89,6 @@ const SigninScreen = (props) => {
                 </Text>
                 <View style={styles.socailGroup}>
                   <UIButton
-                    isDisable={!isValid}
                     onPress={handleSubmit}
                     propStyle={styles.facebookBtn}
                     icon={
@@ -142,11 +147,11 @@ const styles = StyleSheet.create({
     flex: 0.35,
     shadowColor: COLORS.black,
     shadowOffset: {
-      width: 6,
-      height: 6,
+      width: 1,
+      height: 1,
     },
     shadowOpacity: 0.3,
-    elevation: 6
+    elevation: 1
   },
   containerButtom: {
     flex: 1,

@@ -4,9 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './rootNavigation'
 import  * as TYPES  from './types'
-import { FadeInOutAnimation, signupOptionNavigate } from './config'
+import { FadeInOutAnimation, signupOptionNavigate, forgotPasswordOptionNavigate } from './config'
 
-import {SignupScreen, SinginScreen} from '../screen'
+import {SignupScreen, SinginScreen, ForgotPasswordScreen} from '../screen'
 import AppStack from './AppStack'
 import { userInfoSelector } from '../store/selector'
 import { requestUserPermission } from '../utilities/notification'
@@ -27,6 +27,7 @@ const RootNavigator = () => {
                 <>
                    <RootStack.Screen name={TYPES.SIGNIN} options={{headerShown: false}} component={SinginScreen}/>
                    <RootStack.Screen name={TYPES.SIGNUP} options={signupOptionNavigate} component={SignupScreen}/>
+                   <RootStack.Screen name={TYPES.FORGOT_PASSWORD} options={forgotPasswordOptionNavigate} component={ForgotPasswordScreen}/>
                 </>
              ):(
                 <>

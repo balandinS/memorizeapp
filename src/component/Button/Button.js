@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import { TouchableOpacity, StyleSheet } from 'react-native'
+import { TouchableOpacity, StyleSheet, View } from 'react-native'
 import Text from '../Text'
 import {NOOP} from '../../utilities/utilities'
 import { COLORS } from '../../utilities/constans'
@@ -23,8 +23,11 @@ const UIButton = ({contnet='', icon, onPress, propStyle=INITAIL_STYLE_BTN, textC
     }
     return (
         <TouchableOpacity onPress={handleOnPress} style={[styles.containerButton, propStyle]} disabled={isDisable}>
-           {!!contnet && <Text style={[styles.text,  {color : txtColor.current}]}>{contnet}</Text>}
+            <View>
+            {!!contnet && <Text style={[styles.text,  {color : txtColor.current}]}>{contnet}</Text>}
            {icon && icon}
+            </View>
+           
         </TouchableOpacity>
     )
 }
@@ -37,6 +40,13 @@ const styles = StyleSheet.create({
         minWidth: 150,
         justifyContent: 'center',
         paddingVertical: 8,
+        shadowOffset: {
+            height: 2,
+            width: 1
+        }, 
+        shadowColor: COLORS.black,
+        shadowOpacity: .3,
+        elevation: 1
     },
     text: {
         textAlign: 'center',

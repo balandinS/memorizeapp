@@ -11,7 +11,8 @@ export const COLORS = {
    blackLight: 'rgb(37, 36, 42)',
    blue: 'rgb(64, 150, 237)',
    red: 'rgb(235, 51, 36)',
-   graydark: 'rgb(174, 174, 174)'
+   graydark: 'rgb(174, 174, 174)',
+   graylight: 'rgb(240, 239, 246)'
 }
 
 export const SIGNIN_SCREEN_CONTENT = {
@@ -23,3 +24,8 @@ export const SIGNUP_SCREEN_CONTENT = {
    title: 'create \nyour account',
    description: 'Or sign in with socail account'
 }
+
+
+export const STEP1 = 'step1';
+export const STEP2 = 'step2';
+export const STEP3 = 'step3';

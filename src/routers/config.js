@@ -29,12 +29,34 @@ export const FadeInOutAnimation = {
 export const signupOptionNavigate = {
   headerStyle: {
     backgroundColor: COLORS.beige,
-    elevation: 0
+    elevation: 0,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    }
   },
   headerTitle: '',
   headerLeft: (props) => (
     <TouchableOpacity style={styles.singup} onPress={goBack}>
       <Icon name="long-arrow-left" size={30} color={COLORS.blackLight} />
+    </TouchableOpacity>
+  ),
+};
+
+export const forgotPasswordOptionNavigate = {
+  headerStyle: {
+    backgroundColor: COLORS.white,
+    height: 60,
+    elevation: 0,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    }
+  },
+  headerTitle: '',
+  headerLeft: (props) => (
+    <TouchableOpacity style={styles.singup} onPress={goBack}>
+      <Icon name="chevron-left" size={23} color={COLORS.blackLight} />
     </TouchableOpacity>
   ),
 };
