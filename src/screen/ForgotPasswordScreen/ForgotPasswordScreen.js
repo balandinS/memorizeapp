@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-
+import { useSelector } from 'react-redux'
+import { forgotPasswordSelector } from '../../store/selector'
 import {StyleSheet, View, LayoutAnimation, UIManager} from 'react-native';
 import {COLORS, STEP1, STEP2, STEP3} from '../../utilities/constans';
 import {useColorSafeArea, useSteps} from '../../utilities/hooks';
@@ -7,6 +8,7 @@ import {OS} from '../../utilities/utilities';
 import Text from '../../component/Text';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import StepThree from './StepThree'
 
 if (OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -27,16 +29,23 @@ const data = [
   {
       id: STEP3,
       title: 'Reset Youre Password',
+      subtitle: 'User ',
       done: false
   }
 ]
 const ForgotPasswordScreen = () => {
+  const userDetails = useSelector(forgotPasswordSelector)
   const [steps, stepUp] = useSteps(data);
   useColorSafeArea(COLORS.white);
   useEffect(() => {
+    console.log('userDetails --> ', userDetails);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }, [steps.currentStepIndex]);
-  const subtitle = `${steps.data[steps.currentStepIndex].subtitle}`;
+  const subtitle = `${steps.data[steps.currentStepIndex].subtitle} ${
+    steps.currentStepIndex === 1 ? userDetails.phone : '' ||
+    steps.currentStepIndex === 2 ? userDetails.email : '' 
+  
+  }`;
   let CurrentStep = null;
 
   switch (steps.data[steps.currentStepIndex].id) {
@@ -47,6 +56,7 @@ const ForgotPasswordScreen = () => {
       CurrentStep = <StepTwo stepUp={stepUp} />;
       break;
     case STEP3:
+      CurrentStep = <StepThree stepUp={stepUp} />;
       break;
 
     default:
@@ -58,7 +68,7 @@ const ForgotPasswordScreen = () => {
         <Text style={styles.title}>
           {steps.data[steps.currentStepIndex].title}
         </Text>
-        {!!subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+        {!!subtitle && <Text style={styles.subtitle}>{`${subtitle}`}</Text>}
       </View>
       <View style={styles.bodyConatiner}>{CurrentStep}</View>
     </View>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import {forgotPasswordStepOne} from '../../../component/InputText/validationSchema';
@@ -6,12 +7,14 @@ import Input from '../../../component/InputText'
 import UIButton from '../../../component/Button'
 import { COLORS } from '../../../utilities/constans'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import { forgotPasswordStep1 } from '../../../store/forgotPassword/ForgotPasswordAction'
 
 const StepOne = (props) => {
-
-  const nexStep = (vales) => {
-    
-      props.stepUp()
+  
+  const dispatch = useDispatch()
+  const nexStep = (values) => {
+       dispatch(forgotPasswordStep1(values))
+       props.stepUp()
   }
   return (
     <View style={styles.conatiner}>

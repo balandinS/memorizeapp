@@ -10,6 +10,7 @@ export function useColorSafeArea(color){
    const colorSafeAre = useSelector(colorSafeAreaSelector)
    const colored = useCallback(() => dispatch(fillSafeAreaColor(color)), [colorSafeAre])
    useEffect(() => {
+       console.log('rernder');
        colored()
    }, [colorSafeAre])
 }

@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Alert } from 'react-native'
+import { StyleSheet, View} from 'react-native'
 import UILink from '../../../component/UILink'
 import InputOtp from '../../../component/InputOtp'
-const StepTwo = () => {
+const StepTwo = (props) => {
      const [otp, updateOtp] = useState('')
-    const handleUpdateOtp = (updatedOtp) => {
+     const handleUpdateOtp = (updatedOtp) => {
         updateOtp(updatedOtp)
     }
-    const verifyOtp = () => {
-        Alert.alert(otp)
+  
+    const nextStep = (vales) => {
+        props.stepUp()
     }
     return (
         <View style={styles.container}>
             <View style={styles.otp}>
-              <InputOtp handleUpdateOtp={(code) => handleUpdateOtp(code)} verifyOtp={verifyOtp}/>
+              <InputOtp handleUpdateOtp={(code) => handleUpdateOtp(code)} nextStep={nextStep}/>
               <UILink>Send a new code</UILink>
             </View>
         </View>

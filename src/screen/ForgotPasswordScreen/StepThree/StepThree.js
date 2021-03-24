@@ -5,7 +5,6 @@ import {forgotPasswordStepThree} from '../../../component/InputText/validationSc
 import Input from '../../../component/InputText'
 import UIButton from '../../../component/Button'
 import { COLORS } from '../../../utilities/constans'
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const StepThree = (props) => {
 
@@ -20,7 +19,7 @@ const StepThree = (props) => {
           passwordNew: '',
           passwordConfirm: '',
         }}
-        validationSchema={forgotPasswordStepOne}
+        validationSchema={forgotPasswordStepThree}
         onSubmit={nexStep}
         >
         {({
@@ -34,9 +33,9 @@ const StepThree = (props) => {
         }) => (
           <View style={styles.containerSubmit}>
             <View style={styles.inputWrapp}>
-                <Icon name='lock' size={25} style={{marginRight: 20, marginBottom: 15}}/>
               <Input
                 label="New Password"
+                isPassword
                 onEndEditing={() => setFieldTouched('passwordNew')}
                 onChangeText={handleChange('passwordNew')}
                 value={values.passwordNew}
@@ -48,9 +47,9 @@ const StepThree = (props) => {
             </View>
             <View style={styles.hr} />
             <View style={styles.inputWrapp}>
-                <Icon name='lock' size={40} style={{marginRight: 20, marginBottom: 15}}/>
               <Input
                 label="Confirm Password"
+                isPassword
                 onEndEditing={() => setFieldTouched('passwordConfirm')}
                 onChangeText={handleChange('passwordConfirm')}
                 value={values.passwordConfirm}
@@ -63,7 +62,7 @@ const StepThree = (props) => {
             
             <View style={styles.hr} />
             <View style={{marginTop: 40}}>
-               <UIButton onPress={handleSubmit} isDisable={!isValid}  contnet="Send" />
+               <UIButton onPress={handleSubmit} isDisable={!isValid}  contnet="Reset Password" />
             </View>
             
            
