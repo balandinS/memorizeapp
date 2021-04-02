@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useSelector } from 'react-redux'
 import { forgotPasswordSelector } from '../../store/selector'
-import {StyleSheet, View, LayoutAnimation, UIManager} from 'react-native';
+import {StyleSheet, View, LayoutAnimation, UIManager, StatusBar} from 'react-native';
 import {COLORS, STEP1, STEP2, STEP3} from '../../utilities/constans';
 import {useColorSafeArea, useSteps} from '../../utilities/hooks';
 import {OS} from '../../utilities/utilities';
@@ -64,6 +64,12 @@ const ForgotPasswordScreen = () => {
   }
   return (
     <View style={styles.container}>
+      <StatusBar
+        backgroundColor={COLORS.white}
+        translucent={false}
+        hidden={false}
+        barStyle="dark-content"
+      />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>
           {steps.data[steps.currentStepIndex].title}
