@@ -21,6 +21,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import { colorSafeAreaSelector } from './src/store/selector'
 import ReduxStore from './src/store';
 import Router from './src/routers'
+import { COLORS } from './src/utilities/constans';
 
 const SafeAreaViewGroup = (props) => {
   const safeAreaColor = useSelector(colorSafeAreaSelector)
@@ -45,7 +46,7 @@ const App: () => React$Node = () => {
     <View style={styles.container}>
       <View style={styles.statusBarBG} />
       <StatusBar
-        backgroundColor='rgb(229, 222, 216)'
+        backgroundColor={COLORS.beige}
         translucent={false}
         hidden={false}
         barStyle="dark-content"
