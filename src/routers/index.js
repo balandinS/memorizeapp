@@ -23,7 +23,7 @@ const RootNavigator = () => {
          headerMode="float"
          screenOptions={{...FadeInOutAnimation}}
         >
-             { userInfo.userToken == null ? (
+             { userInfo.userToken ? (
                 <>
                    <RootStack.Screen name={TYPES.SIGNIN} options={{headerShown: false}} component={SinginScreen}/>
                    <RootStack.Screen name={TYPES.SIGNUP} options={signupOptionNavigate} component={SignupScreen}/>
