@@ -16,6 +16,7 @@ const UIButton = ({contnet='', icon, onPress, propStyle=INITAIL_STYLE_BTN, textC
     const txtColor = useRef(!!textColor ? textColor : COLORS.white)
     const handleOnPress= () => {
          if(typeof onPress === "function"){
+             console.log('clicked');
             onPress()
          }else {
              NOOP()
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
         }, 
         shadowColor: COLORS.black,
         shadowOpacity: .3,
-        elevation: 1
+        elevation: 0
     },
     text: {
         textAlign: 'center',
