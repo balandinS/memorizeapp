@@ -16,7 +16,6 @@ const UIButton = ({contnet='', icon, onPress, propStyle=INITAIL_STYLE_BTN, textC
     const txtColor = useRef(!!textColor ? textColor : COLORS.white)
     const handleOnPress= () => {
          if(typeof onPress === "function"){
-             console.log('clicked');
             onPress()
          }else {
              NOOP()
