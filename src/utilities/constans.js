@@ -1,4 +1,3 @@
-import { exp } from "react-native/Libraries/Animated/src/Easing";
 
 export const COLORS = {
    peterriver:  'rgba(52, 152, 219,1.0)',
