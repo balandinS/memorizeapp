@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Formik} from 'formik';
 import Text from '../../component/Text';
@@ -8,15 +9,20 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {COLORS, SIGNIN_SCREEN_CONTENT} from '../../utilities/constans';
 import {signinScheme} from '../../component/InputText/validationSchema';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP, FORGOT_PASSWORD } from '../../routers/types'
-import { useColorSafeArea } from '../../utilities/hooks'
-
+import { SIGNUP, FORGOT_PASSWORD, APP_STACK } from '../../routers/types'
+import { useColorSafeArea, useLoginStatus } from '../../utilities/hooks'
+import { loginSocailFacebookAction } from '../../store/login/socialLogin/SocialLoginAction'
+import { SOCIAL_LOGIN_FACEBOOK } from '../../store/login/socialLogin/SocialLoginTypes'
 const SigninScreen = (props) => { 
   const navigation = useNavigation();
+  const dispatch = useDispatch()
   const handleSignup = () => navigation.navigate(SIGNUP)
   const handleForgotPassword = () => navigation.navigate(FORGOT_PASSWORD)
   useColorSafeArea(COLORS.beige)
-
+  const isLogin = useLoginStatus(APP_STACK)
+  const handleLoginFaceBook = () => {
+    dispatch(loginSocailFacebookAction({type: SOCIAL_LOGIN_FACEBOOK}))
+  }
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -89,8 +95,8 @@ const SigninScreen = (props) => {
                 </Text>
                 <View style={styles.socailGroup}>
                   <UIButton
-                    onPress={handleSubmit}
                     propStyle={styles.facebookBtn}
+                    onPress={handleLoginFaceBook}
                     icon={
                       <Icon
                         name="facebook"
