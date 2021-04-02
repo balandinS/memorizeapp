@@ -5,3 +5,10 @@ export const fillSafeAreaColor = color => {
       payload: color
    }
 }
+export const startLoadingAppAction = () =>({
+   type: TYPES.APP_START_LOADING
+})
+
+export const endLoadingAppAction = () => ({
+   type: TYPES.APP_END_LOADING
+})
