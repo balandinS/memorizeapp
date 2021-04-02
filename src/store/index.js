@@ -11,7 +11,7 @@ const persistConfig = {
     storage: AsyncStorage,
     stateReconciler: autoMergeLevel2,
     // keyPrefix: 'LoginReducer',
-    whitelist: ['LoginReducer']
+    whitelist: ['UserReducer']
 }
 const persistedReducer = persistReducer(persistConfig, reduces)
 
