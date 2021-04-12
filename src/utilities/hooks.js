@@ -3,7 +3,7 @@ import { Animated,  Easing } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillSafeAreaColor } from '../store/ui/UiAction'
-import { colorSafeAreaSelector, userInfoSelector } from '../store/selector'
+import { colorSafeAreaSelector, isAppLoadingSelector } from '../store/selector'
 
 //Fill color Safe area 
 export function useColorSafeArea(color){
@@ -67,17 +67,3 @@ export function useSteps(data){
   return [ steps , stepUp ]
 }
 
-//login hook
-
-export const useLoginStatus = (screenName = '') => {
-   const { isLogin, isLoading }  = useSelector(userInfoSelector)
-   const navigation = useNavigation()
-    useEffect(() => {
-        console.log('isLogin, isLoading -->', isLogin, isLoading);
-       if(isLogin && screenName){
-        navigation.navigate(screenName)
-       }
-    }, [isLoading]) 
-
-    return isLoading
-}

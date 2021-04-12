@@ -9,7 +9,9 @@ import {
 } from 'react-native';
 import Text from '../Text';
 import {COLORS} from '../../utilities/constans';
-import {SIGNIN} from '../../routers/types';
+import {SIGNIN, SIGNUP} from '../../routers/types';
+import { useRoute } from '@react-navigation/native';
+
 const Input = (props) => {
   const [isFocus, setIsFocus] = useState(false);
   const labelAnime = useRef(new Animated.Value(!props.value ? 1 : 0)).current;
@@ -25,6 +27,10 @@ const Input = (props) => {
       easing: Easing.linear,
     }).start();
   });
+
+  const route = useRoute();
+
+
   return (
     <View style={styles.container}>
       <Animated.Text
@@ -68,7 +74,7 @@ const Input = (props) => {
           style={styles.input}
           onChangeText={(text) => props.onChangeText(text)}
         />
-        {props.isPassword && props.screenName === SIGNIN && (
+        {props.isPassword && route.name === SIGNIN && (
           <TouchableOpacity
             onPress={props.handleForgotPassword}
             style={{alignItems: 'center', justifyContent: 'center', width: 70}}>
@@ -76,7 +82,7 @@ const Input = (props) => {
           </TouchableOpacity>
         )}
       </View>
-      {props.isErrMsg.isValid && (
+      {props.isErrMsg.isValid && props.isErrMsg.msg && (
         <Text style={styles.errorMsg}>*{props.isErrMsg.msg}</Text>
       )}
     </View>

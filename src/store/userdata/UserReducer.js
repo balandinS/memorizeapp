@@ -2,46 +2,56 @@ import {
   SIGNUP,
   SIGNOUT,
   SIGNIN,
-  EXIST_USER,
-  SOCAIL_SIGNUP,
-  STARTED_SIGNUP,
-  ENDED_SIGNIN,
+  START_INITAILIZING,
+  END_INITAILIZING
 } from './UserTypes';
 import {REHYDRATE} from 'redux-persist';
 const intailState = {
-  name: '',
-  id: '',
-  avatar: '',
-  isLogin: ''
+  isLogin: false,
+  initializing: false,
+  details: {}
 };
 
 export default (state = intailState, action) => {
   switch (action.type) {
     case SIGNIN:
       return {
-        name: action.payload.id,
-        id: action.payload.name,
-        avatar: action.payload.avatar,
-        isLogin: true,
+        ...state,
+        isLogin: true ,
+        details: {...action.payload}
       };
     case SIGNUP:
       return {
-        userToken: action.id,
-        userName: action.name,
-        avatar: action.avatar,
-        signWith: action.signWith,
-        isLogin: true,
+        ...state,
+        isLogin: true ,
+        details: {...action.payload}
       };
     case SIGNOUT:
       return {...intailState};
-    case REHYDRATE:
-      if(action?.payload?.UserReducer){
-        return {
-          ...action.payload.UserReducer,
-        };
-      } else{
-        return state
+    case START_INITAILIZING: 
+      return {
+        ...state,
+        intailState: true
       }
+      case START_INITAILIZING: 
+      return {
+        ...state,
+        intailState: true
+      }
+      case END_INITAILIZING: 
+      return {
+        ...state,
+        intailState: false
+      }
+    // case REHYDRATE:
+    //   console.log('persist');
+    //   if(action?.payload?.UserReducer){
+    //     return {
+    //       ...action.payload.UserReducer,
+    //     };
+    //   } else{
+    //     return state
+    //   }
     default:
       return state;
   }

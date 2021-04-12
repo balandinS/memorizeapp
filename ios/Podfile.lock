@@ -180,6 +180,10 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
+  - lottie-ios (3.1.8)
+  - lottie-react-native (3.5.0):
+    - lottie-ios (~> 3.1.8)
+    - React
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -448,7 +452,7 @@ PODS:
   - RNFBApp (10.7.0):
     - Firebase/CoreOnly (~> 7.6.0)
     - React-Core
-  - RNFBAuth (10.7.0):
+  - RNFBAuth (11.2.0):
     - Firebase/Auth (~> 7.6.0)
     - React-Core
     - RNFBApp
@@ -497,6 +501,8 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (~> 0.54.0)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - lottie-ios (from `../node_modules/lottie-ios`)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -582,6 +588,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  lottie-ios:
+    :path: "../node_modules/lottie-ios"
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -689,6 +699,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -720,7 +732,7 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786
   RNFBAnalytics: 26ee756dae56153ad200e41e9c2e66bb00a27a3c
   RNFBApp: 5fe5cb0a558621a0cdab2cfa59d873ae6c1be441
-  RNFBAuth: 75b94af5a7f326a08def968bf9e44dd32d24ba03
+  RNFBAuth: a965d6e0c7025c7210205a3f07fb6d57c8fd1f98
   RNFBMessaging: ccd2a3150d398815f4b6125e2bc581b8eb5a98aa
   RNGestureHandler: 03f587ba19a7e2d9fe48fb9aa6e33ace5fd07dd5
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499

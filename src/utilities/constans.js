@@ -9,6 +9,7 @@ export const COLORS = {
    gray: 'rgb(247,247,247)',
    blackLight: 'rgb(37, 36, 42)',
    blue: 'rgb(64, 150, 237)',
+   green: 'rgb(88, 165, 92)',
    red: 'rgb(235, 51, 36)',
    graydark: 'rgb(174, 174, 174)',
    graylight: 'rgb(240, 239, 246)'

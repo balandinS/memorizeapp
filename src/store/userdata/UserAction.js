@@ -1,4 +1,4 @@
-import * as TYPES from './LoginTypes';
+import * as TYPES from './UserTypes';
 
 export const signinAction = (userInfo) => ({
     type: TYPES.SIGNIN,
@@ -14,11 +14,11 @@ export const signoutAction = (userInfo) => ({
 })
 
 export const loginSocailFacebookAction = () => ({
-    type: TYPES.SOCIAL_LOGIN_FACEBOOK,
+    type: TYPES.FACEBOOK_LOGIN,
 })
 
 export const logoutSocailFacebookAction = () => ({
-    type: TYPES.SOCAIL_LOGOUT_FACEBOOK,
+    type: TYPES.FACEBOOK_LOGOUT,
 })
 
 export const loginSocailGoogleAction = () => ({
@@ -27,4 +27,17 @@ export const loginSocailGoogleAction = () => ({
 
 export const logoutSocailGoogleAction = () => ({
     type: SOCAIL_LOGOUT_GOOGLE
+})
+
+export const startInitializing = () => ({
+    type: TYPES.START_INITAILIZING
+})
+
+export const endInitializing = () => ({
+    type: TYPES.END_INITAILIZING
+})
+
+export const signupWithEmailAndPasswordAction = (email, password) => ({ 
+    type: TYPES.EMAIL_SIGNUP,
+    payload: {email, password}
 })

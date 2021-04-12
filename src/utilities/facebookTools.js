@@ -4,7 +4,7 @@ import {
     GraphRequestManager,
     LoginManager,
   } from 'react-native-fbsdk';
-
+import auth from '@react-native-firebase/auth';
 
   const PROFILE_REQUEST_PARAMS = {
     fields: {
@@ -14,31 +14,15 @@ import {
   
 
 const handleAccessToken = async (resolve, reject ) => {
-   const login = await LoginManager.logInWithPermissions(['public_profile'])
+   const login = await LoginManager.logInWithPermissions(['public_profile', 'email'])
     if(login.isCancelled){
         reject('Login cancelled')
     } else {
       const response = await AccessToken.getCurrentAccessToken()
-      resolve(response.accessToken.toString())
+      const facebookCredential = auth.FacebookAuthProvider.credential(response.accessToken);
+      resolve(auth().signInWithCredential(facebookCredential));
     }
 }
-
-const handleprofileRequest = token  => new Promise((resolve, reject) => {
-    const profileRequest = new GraphRequest(
-        '/me',
-        {token, parameters: PROFILE_REQUEST_PARAMS},
-        (error, user) => {
-            if (error) {
-              reject('login info has error: ' + error);
-            } else {
-                const {name, id, picture} = user.userInfo
-                resolve({name, id, avatar: picture?.data?.url});
-            }
-          }
-
-    )
-    new GraphRequestManager().addRequest(profileRequest).start()
-})
 
 const handleLogoutFacebook = async resolve => {
    await LoginManager.logOut()
@@ -46,5 +30,4 @@ const handleLogoutFacebook = async resolve => {
 }
 
   export const accessToken = () => new Promise(handleAccessToken)
-  export const profileRequest = handleprofileRequest
   export const logoutFaceBook = () => new Promise(handleLogoutFacebook)

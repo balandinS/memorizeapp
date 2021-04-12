@@ -1,17 +1,17 @@
 import * as TYPES from './UserTypes';
 import {call, takeLatest, put} from 'redux-saga/effects';
 import {
-  signinAction
+  signinAction,
+  startInitializing,
+  endInitializing
 } from './UserAction.js';
-import { logoutFaceBook, accessToken, profileRequest } from '../../utilities/facebookTools'
+import { logoutFaceBook, accessToken } from '../../utilities/facebookTools'
 import { startLoadingAppAction, endLoadingAppAction } from '../ui/UiAction'
+import { createUserWithEmail } from '../../utilities/utilities'
 const loginSocailFacebook = function* () {
   yield put(startLoadingAppAction());
-  const response  = yield call(accessToken);
-  const data = yield call(
-    async () => await profileRequest(response),
-  );
-  yield put(signinAction(data));
+  const {user}  = yield call(accessToken);
+  yield put(signinAction(user));
   yield put(endLoadingAppAction());
 };
 
@@ -22,7 +22,21 @@ const logoutSocailFacebook = function* () {
   });
 };
 
+const sinupWithEmail =function* ({type, payload}) {
+    yield put(startLoadingAppAction())
+    yield put(startInitializing())
+    try {
+      const user = yield call(createUserWithEmail,payload.email, payload.password,)
+      yield put(signinAction(user));
+    } catch (error) {
+      console.log( 'error ---> ', error)
+    } finally{
+      yield put(endInitializing())
+      yield put(endLoadingAppAction())
+    } 
+}
 export default function* userSaga() {
   yield takeLatest(TYPES.FACEBOOK_LOGIN, loginSocailFacebook);
   yield takeLatest(TYPES.FACEBOOK_LOGOUT, logoutSocailFacebook);
+  yield takeLatest(TYPES.EMAIL_SIGNUP, sinupWithEmail)
 }

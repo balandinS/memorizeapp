@@ -24,15 +24,6 @@ export const signinScheme = () =>
 
 export const signupScheme = () =>
   yup.object().shape({
-    name: yup
-      .string()
-      .min(2, '2 minimum characters ')
-      .max(58, '58 maximum characters')
-      .matches(
-        /(^[A-Za-z]{2,16})([ ]{0,1})([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})$/,
-        'plaese enter name without number and symbols',
-      )
-      .required('Required field'),
     email: yup
       .string()
       .email('wrong email')
