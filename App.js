@@ -22,7 +22,7 @@ import { colorSafeAreaSelector } from './src/store/selector'
 import ReduxStore from './src/store';
 import Router from './src/routers'
 import { COLORS } from './src/utilities/constans';
-
+import MoadalPopup from './src/component/ModalPopup'
 const SafeAreaViewGroup = (props) => {
   const safeAreaColor = useSelector(colorSafeAreaSelector)
   return (
@@ -55,6 +55,7 @@ const App: () => React$Node = () => {
         <PersistGate loading={null} persistor={ReduxStore.persistor}>
           <SafeAreaViewGroup >
             <Router />
+            <MoadalPopup />
           </SafeAreaViewGroup>
         </PersistGate>
       </Provider>

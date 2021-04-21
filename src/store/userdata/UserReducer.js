@@ -3,7 +3,8 @@ import {
   SIGNOUT,
   SIGNIN,
   START_INITAILIZING,
-  END_INITAILIZING
+  END_INITAILIZING,
+  CLEAR_USER_DETAILS
 } from './UserTypes';
 import {REHYDRATE} from 'redux-persist';
 const intailState = {
@@ -43,6 +44,9 @@ export default (state = intailState, action) => {
         ...state,
         intailState: false
       }
+    case CLEAR_USER_DETAILS: {
+     return  {...intailState}
+    }
     // case REHYDRATE:
     //   console.log('persist');
     //   if(action?.payload?.UserReducer){

@@ -83,7 +83,7 @@ const SignupScreen = (props) => {
                     {
                       touched.password &&
                       !errors.password && (
-                        <LottieView loop={false} autoPlay style={{height: 35, with:35}} source={require('../../assessts/animations/successAnimation.json')}/>
+                        <LottieView loop={false} autoPlay style={{height: 35, width:35}} source={require('../../assessts/animations/successAnimation.json')}/>
                       )
                     }
                     

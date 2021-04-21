@@ -28,7 +28,7 @@ const RootNavigator = () => {
     <RootStack.Navigator
       headerMode="float"
       screenOptions={{...FadeInOutAnimation}}>
-      {userInfo?.details?._user?.refreshToken ? (
+      {!userInfo?.details?._user?.refreshToken ? (
         <>
           <RootStack.Screen
             name={TYPES.SIGNIN}

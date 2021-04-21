@@ -1,0 +1,3 @@
+export const SET_IS_MODAL_VISIBLE = 'modal/SET_IS_MODAL_VISIBLE';
+export const UPDATE_MODAL_PROPS = 'modal/UPDATE_MODAL_PROPS';
+export const RESET_MODAL_PROPS = 'modal/RESET_MODAL_PROPS';

@@ -5,6 +5,7 @@ import reduces from './reduces';
 import { rootSaga } from './rootSaga'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { composeWithDevTools } from 'redux-devtools-extension'
 const sagaMiddleware = createSagaMiddleware()
 const persistConfig = {
     key: 'root',
@@ -21,7 +22,8 @@ const getCompose = () => {
 
 const store = createStore(
     persistedReducer,
-    getCompose()
+    composeWithDevTools(getCompose())
+    
 )
 
 const persistor = persistStore(store)

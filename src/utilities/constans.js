@@ -12,7 +12,9 @@ export const COLORS = {
    green: 'rgb(88, 165, 92)',
    red: 'rgb(235, 51, 36)',
    graydark: 'rgb(174, 174, 174)',
-   graylight: 'rgb(240, 239, 246)'
+   graylight: 'rgb(240, 239, 246)', 
+
+   black_50: 'rgba(17 ,10, 8, .5)'
 }
 
 export const SIGNIN_SCREEN_CONTENT = {
@@ -29,3 +31,12 @@ export const SIGNUP_SCREEN_CONTENT = {
 export const STEP1 = 'step1';
 export const STEP2 = 'step2';
 export const STEP3 = 'step3';
+
+
+export const MODAL_TYPES = {
+   error: 'ERROR_MODAL',
+   errorTwoBtn: 'ERROR_TWO_BUTTON_MODAL',
+   twoBtnVer: 'TWO_VERTICAL_BUTTON_MODAL',
+   twoBtnHor: 'TWO_HORIZNTAL_BUTTON_MODAL',
+   oneBtnVer: 'ONE_BUTTON_MODAL',
+}
