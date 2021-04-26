@@ -7,7 +7,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import {COLORS, MODAL_TYPES} from '../../utilities/constans';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Button from '../Button';
 import Text from '../Text';
 import img from '../../assessts/images/modalContent.jpg';
@@ -16,27 +16,48 @@ import {
   modalContentSelector,
   modalTitleSelector,
   isModalVisableSelector,
+  modalIsClosebleSelector,
+  modalOkBtnSelector,
+  modalCancelBtnSelector
 } from '../../store/selector';
+import { setVisableModalAction } from '../../store/modalPopup/popupAction'
 const MoadalPopup = () => {
 
   const isModalVisable = useSelector(isModalVisableSelector);
   const modalTitle = useSelector(modalTitleSelector);
   const modalContent = useSelector(modalContentSelector);
-  const closebale = useSelector()
+  const closebale = useSelector(modalIsClosebleSelector)
+  const modalOkBtn = useSelector(modalOkBtnSelector);
+  const modalCancel= useSelector(modalCancelBtnSelector)
+  const dispatch = useDispatch();
 
-  const renderOneBtnModal = () => (
-    <View style={{flex: 1, padding: 0}}>
-      <ImageBackground source={img} style={styles.bodyModal}>
-        <View style={{flex: 1, justifyContent: 'center', marginTop: 25}}>
-          {!!modalTitle && <Text style={flattern}>{modalTitle}</Text>}
-          <Text style={styles.textModal}>{modalContent}</Text>
+  const setVisableModal = value => {
+    dispatch(setVisableModalAction(value))
+  }
+
+  const hideModal = () =>  {
+    setVisableModal(false)
+  }
+  const renderOneBtnModal = () => {
+    const okPress = () => {
+      modalOkBtn && modalOkBtn()
+      hideModal()
+    }
+
+    return (
+      <View style={{flex: 1, padding: 0}}>
+        <ImageBackground source={img} style={styles.bodyModal}>
+          <View style={{flex: 1, justifyContent: 'center', marginTop: 25}}>
+            {!!modalTitle && <Text style={flattern}>{modalTitle}</Text>}
+            <Text style={styles.textModal}>{modalContent}</Text>
+          </View>
+        </ImageBackground>
+        <View style={styles.footerModal}>
+          <Button onPress={okPress} contnet="OK, yes sure" />
         </View>
-      </ImageBackground>
-      <View style={styles.footerModal}>
-        <Button contnet="OK, yes sure" />
       </View>
-    </View>
-  );
+    );
+  }
   const renderModalByType = (modalType) => {
     switch (modalType) {
       case MODAL_TYPES.oneBtnVer:
@@ -48,7 +69,7 @@ const MoadalPopup = () => {
   };
   return (
     <Modal transparent={true} visible={isModalVisable} animationType="fade">
-      <Pressable onPress={() => setstate(false)} style={{flex: 1}} disabled={}>
+      <Pressable onPress={hideModal} style={{flex: 1}} disabled={!closebale}>
         <View style={styles.modalContainer}>
           <View style={styles.mdl}>
             {renderModalByType(MODAL_TYPES.oneBtnVer)}

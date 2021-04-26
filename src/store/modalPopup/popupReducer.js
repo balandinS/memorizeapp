@@ -11,7 +11,7 @@ const INITAIL_STATE = {
   cancelBtnLabel: 'Cancel',
   modalType: MODAL_TYPES.oneBtnVer,
   okBtnAction: NOOP,
-  cancekBtnAction: NOOP,
+  cancelBtnAction: NOOP,
 };
 
 export default (state = INITAIL_STATE, action) => {

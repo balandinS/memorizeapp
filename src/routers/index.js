@@ -21,14 +21,14 @@ const RootNavigator = () => {
   const userInfo = useSelector(userInfoSelector);
   const dispatch = useDispatch()
   useEffect(() => {
-    OS === 'ios' && requestUserPermission();
+    requestUserPermission();
   });
   
   return (
     <RootStack.Navigator
       headerMode="float"
       screenOptions={{...FadeInOutAnimation}}>
-      {!userInfo?.details?._user?.refreshToken ? (
+      {!userInfo.refreshToken ? (
         <>
           <RootStack.Screen
             name={TYPES.SIGNIN}

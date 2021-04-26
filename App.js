@@ -23,6 +23,7 @@ import ReduxStore from './src/store';
 import Router from './src/routers'
 import { COLORS } from './src/utilities/constans';
 import MoadalPopup from './src/component/ModalPopup'
+import { getToken } from './src/utilities/notification'
 const SafeAreaViewGroup = (props) => {
   const safeAreaColor = useSelector(colorSafeAreaSelector)
   return (
@@ -36,10 +37,14 @@ const SafeAreaViewGroup = (props) => {
 }
 const App: () => React$Node = () => {
   useEffect(() => {
+    getToken()
     const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log('JSON.stringify(remoteMessage) --> ', JSON.stringify(remoteMessage));
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
-
+    messaging()
+    .subscribeToTopic('test')
+    .then(() => console.log('Subscribed to topic!'));
     return unsubscribe;
   }, []);
   return (

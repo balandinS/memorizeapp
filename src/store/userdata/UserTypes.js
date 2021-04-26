@@ -1,21 +1,19 @@
 export const SIGNUP = 'SIGNUP'
 export const SIGNIN = 'SIGNOUT'
 export const SIGNOUT = 'SIGNOUT'
-export const EXIST_USER = 'EXIST_USER'
-export const SOCAIL_SIGNUP = 'SOCAIL_SIGNUP'
-export const STARTED_SIGNUP = 'STARTED_SIGNUP'
-export const ENDED_SIGNIN = 'ENDED_SIGNIN'
+
 export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS'
+
 export const FACEBOOK_LOGIN = 'FACEBOOK_LOGIN';
 export const FACEBOOK_LOGOUT = 'FACEBOOK_LOGOUT';
 
-export const EMAIL_LOGIN = 'EMAIL_LOGIN';
-export const EMAIL_LOGOUT = 'EMAIL_LOGOUT';
-export const EMAIL_SIGNUP = 'EMAIL_LOGIN';
-
-
 export const GOOGLE_LOGIN = 'GOOGLE_LOGIN';
 export const GOOGLE_LOGOUT = 'GOOGLE_LOGOUT';
+
+export const EMAIL_LOGIN = 'EMAIL_LOGIN';
+export const EMAIL_LOGOUT = 'EMAIL_LOGOUT';
+export const EMAIL_SIGNUP = 'EMAIL_SIGNUP';
+
 
 export const START_INITAILIZING = 'START_INITAILIZING'
 export const END_INITAILIZING = 'END_INITAILIZING'

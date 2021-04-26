@@ -8,7 +8,7 @@ import {
 } from './UserAction.js';
 import { logoutFaceBook, accessToken } from '../../utilities/facebookTools'
 import { startLoadingAppAction, endLoadingAppAction } from '../ui/UiAction'
-import { createUserWithEmail } from '../../utilities/utilities'
+import { createUserWithEmail, signinWithEmailAndPassword , NOOP } from '../../utilities/utilities'
 import { updateModalProps } from '../modalPopup/popupAction'
 
 const claerDetials = function* () {
@@ -17,9 +17,8 @@ const claerDetials = function* () {
 const modalError = function* (modalContent) {
   const payload = {
     isModalVisable: true,
-    modalTile: 'Error MEssage',
-    modalContent,
-
+    modalTile: 'Error Message',
+    modalContent
   }
   yield put(updateModalProps(payload))
 }
@@ -27,7 +26,7 @@ const modalError = function* (modalContent) {
 const loginSocailFacebook = function* () {
   yield put(startLoadingAppAction());
   const {user}  = yield call(accessToken);
-  yield put(signinAction(user));
+  yield put(signinAction(user._user));
   yield put(endLoadingAppAction());
 };
 
@@ -38,7 +37,7 @@ const logoutSocailFacebook = function* () {
   });
 };
 
-const sinupWithEmail =function* ({type, payload}) {
+const signupWithEmail =function* ({type, payload}) {
     yield put(startLoadingAppAction())
     yield put(startInitializing())
     try {
@@ -51,8 +50,20 @@ const sinupWithEmail =function* ({type, payload}) {
       yield put(endLoadingAppAction())
     } 
 }
+const signinWithEmail =function* ({type, payload}) {
+  yield put(startLoadingAppAction())
+  try {
+    const user = yield call(signinWithEmailAndPassword, payload.email, payload.password,)
+    yield put(signinAction(user._user));
+  } catch (error) {
+   yield call(modalError, error)
+  } finally{
+    yield put(endLoadingAppAction())
+  } 
+}
 export default function* userSaga() {
   yield takeLatest(TYPES.FACEBOOK_LOGIN, loginSocailFacebook);
   yield takeLatest(TYPES.FACEBOOK_LOGOUT, logoutSocailFacebook);
-  yield takeLatest(TYPES.EMAIL_SIGNUP, sinupWithEmail)
+  yield takeLatest(TYPES.EMAIL_SIGNUP, signupWithEmail)
+  yield takeLatest(TYPES.EMAIL_LOGIN, signinWithEmail)
 }

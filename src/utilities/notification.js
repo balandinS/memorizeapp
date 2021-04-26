@@ -3,9 +3,11 @@ import {OS} from './utilities';
 export const getToken = async () => {
   try {
     if (!messaging().isDeviceRegisteredForRemoteMessages) {
+      
       await messaging().registerDeviceForRemoteMessages();
     }
     const token = await messaging().getToken();
+    console.log('messaging --> ', token);
     return token;
   } catch (error) {}
 };

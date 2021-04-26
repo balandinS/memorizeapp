@@ -11,7 +11,7 @@ import {signinScheme} from '../../component/InputText/validationSchema';
 import { useNavigation } from '@react-navigation/native';
 import { SIGNUP, FORGOT_PASSWORD } from '../../routers/types'
 import { useColorSafeArea } from '../../utilities/hooks'
-import { loginSocailFacebookAction } from '../../store/userdata/UserAction'
+import { loginSocailFacebookAction, signinWithEmailAndPasswordAction } from '../../store/userdata/UserAction'
 import * as TYPES from '../../store/userdata/UserTypes'
 const SigninScreen = (props) => { 
 
@@ -21,7 +21,9 @@ const SigninScreen = (props) => {
   const handleSignup = () => navigation.navigate(SIGNUP)
   const handleForgotPassword = () => navigation.navigate(FORGOT_PASSWORD)
   const handleLoginFaceBook = () => dispatch(loginSocailFacebookAction())
-
+  const onSubmitAction = values => {
+    dispatch(signinWithEmailAndPasswordAction(values.email, values.password))
+  }
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -35,9 +37,7 @@ const SigninScreen = (props) => {
             remember: false,
           }}
           validationSchema={signinScheme}
-          onSubmit={(values) => {
-            console.log(values);
-          }}>
+          onSubmit={onSubmitAction}>
           {({
             values,
             handleChange,
@@ -84,7 +84,7 @@ const SigninScreen = (props) => {
                   height: 110,
                   justifyContent: 'space-around'
                 }}>
-                <UIButton contnet="Log In" isDisable={!isValid}/>
+                <UIButton onPress={handleSubmit} contnet="Log In" isDisable={!isValid}/>
                 <UIButton onPress={handleSignup}  propStyle={styles.signup} contnet="Sign Up" textColor={COLORS.blackLight}/>
               </View>
               <View style={styles.descriptionConatiner}>

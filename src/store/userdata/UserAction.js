@@ -42,6 +42,11 @@ export const signupWithEmailAndPasswordAction = (email, password) => ({
     payload: {email, password}
 })
 
+export const signinWithEmailAndPasswordAction = (email, password) => ({ 
+    type: TYPES.EMAIL_LOGIN,
+    payload: {email, password}
+})
+
 export const resetUserDitailsAction = () => ({
     type: TYPES.CLEAR_USER_DETAILS
 })
