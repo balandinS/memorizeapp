@@ -4,13 +4,17 @@ import {
   SIGNIN,
   START_INITAILIZING,
   END_INITAILIZING,
-  CLEAR_USER_DETAILS
+  CLEAR_USER_DETAILS,
+  META_NOTIFI
+
 } from './UserTypes';
 import {REHYDRATE} from 'redux-persist';
 const intailState = {
   isLogin: false,
   initializing: false,
-  details: {}
+  details: {},
+  metaNotifi: {},
+  notification: {}
 };
 
 export default (state = intailState, action) => {
@@ -44,6 +48,12 @@ export default (state = intailState, action) => {
         ...state,
         intailState: false
       }
+    case META_NOTIFI: {
+      return { 
+        ...state, 
+        metaNotifi: action.payload
+      }
+    }
     case CLEAR_USER_DETAILS: {
      return  {...intailState}
     }

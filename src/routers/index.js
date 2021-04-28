@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -15,14 +15,11 @@ import AppStack from './AppStack';
 import {userInfoSelector} from '../store/selector';
 import {requestUserPermission} from '../utilities/notification';
 import {OS} from '../utilities/utilities';
+import { initFCM } from '../utilities/notification'
 const RootStack = createStackNavigator();
 
 const RootNavigator = () => {
   const userInfo = useSelector(userInfoSelector);
-  const dispatch = useDispatch()
-  useEffect(() => {
-    requestUserPermission();
-  });
   
   return (
     <RootStack.Navigator

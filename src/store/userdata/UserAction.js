@@ -50,3 +50,8 @@ export const signinWithEmailAndPasswordAction = (email, password) => ({
 export const resetUserDitailsAction = () => ({
     type: TYPES.CLEAR_USER_DETAILS
 })
+
+export const setMetaMessaging = meta => ({
+    type: TYPES.META_NOTIFI,
+    payload: meta
+})
