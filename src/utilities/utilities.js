@@ -1,7 +1,8 @@
-import {Platform} from 'react-native';
+import {Platform, Dimensions} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 export const OS = Platform.OS;
+export const widthScreen = Dimensions.get('screen').width
 export const NOOP = () => {};
 
 export function createUserWithEmail(email, password) {

@@ -23,7 +23,6 @@ import ReduxStore from './src/store';
 import Router from './src/routers'
 import { COLORS } from './src/utilities/constans';
 import MoadalPopup from './src/component/ModalPopup'
-import { getToken } from './src/utilities/notification'
 const SafeAreaViewGroup = (props) => {
   const safeAreaColor = useSelector(colorSafeAreaSelector)
   return (

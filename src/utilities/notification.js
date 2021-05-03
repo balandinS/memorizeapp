@@ -54,7 +54,7 @@ function FCMRegister() {
   };
 
 // delete token
-  this.deleteToken = function () {
+  this.deleteToken = async function () {
     try {
       await messaging().deleteToken()
     } catch (error) {
@@ -90,11 +90,16 @@ function FCMRegister() {
         onNotification(notification)
        }
     })
-
-    //unregister 
-      this.unRegister = function () {
-      this.messageListener()
-    };
+    messaging().onTokenRefresh(FCMtoken => {
+      if(FCMtoken)
+       onRegister(FCMtoken)
+    })
+    
   }
+
+  //unregister 
+  this.unRegister = function () {
+   this.messageListener()
+  };
 }
 export const fcmService = new FCMRegister()
