@@ -13,9 +13,7 @@ import {
 import {SignupScreen, SinginScreen, ForgotPasswordScreen} from '../screen';
 import AppStack from './AppStack';
 import {userInfoSelector} from '../store/selector';
-import {requestUserPermission} from '../utilities/notification';
-import {OS} from '../utilities/utilities';
-import { initFCM } from '../utilities/notification'
+
 const RootStack = createStackNavigator();
 
 const RootNavigator = () => {
@@ -25,7 +23,7 @@ const RootNavigator = () => {
     <RootStack.Navigator
       headerMode="float"
       screenOptions={{...FadeInOutAnimation}}>
-      {!userInfo.refreshToken ? (
+      {!userInfo.refreshToken  ? (
         <>
           <RootStack.Screen
             name={TYPES.SIGNIN}

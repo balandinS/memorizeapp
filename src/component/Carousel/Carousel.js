@@ -67,7 +67,6 @@ const Carousel = (props) => {
           init(w);
         }}
         onScroll={data => {
-          console.log('interval --> ', interval);
           setInterval(getInterval(data.nativeEvent.contentOffset.x));
         }}
         scrollEventThrottle={200}

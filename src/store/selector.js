@@ -9,3 +9,6 @@ export const modalContentSelector = (state) =>  state.PopupReducer.modalContent
 export const modalIsClosebleSelector = (state) => state.PopupReducer.closable
 export const modalOkBtnSelector = (state) => state.PopupReducer.okBtnAction
 export const modalCancelBtnSelector = (state) => state.PopupReducer.cancelBtnAction
+
+export const dataTabsSelector = ( state ) => state.HomeReducer.dataTabs
+export const selectedTabSelector = ( state ) => state.HomeReducer.selectedCategorie
