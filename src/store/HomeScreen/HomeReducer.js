@@ -37,7 +37,7 @@ const INITAIL_STATE = {
           },
           {
             name: 'Babys',
-            image: require('../../assessts/images/subcategories_children.jpg')
+            image: require('../../assessts/images/subcategories_baby.jpg')
           },
         ],
       },
@@ -58,7 +58,7 @@ const INITAIL_STATE = {
         subcategories: [
           {
             name: 'Accessories',
-            image: require('../../assessts/images/subcategories_bags.jpg'),
+            image: require('../../assessts/images/subcategoties_accessories.jpg'),
           },
           {
             name: 'Watches',
@@ -66,8 +66,8 @@ const INITAIL_STATE = {
           },
           {
             name: 'Bags',
-            iamge: require('../../assessts/images/subcategories_bags.jpg'),
-          },
+            image: require('../../assessts/images/subcategories_bags.jpg'),
+          },      
           {
             name: 'Jewelerys',
             image: require('../../assessts/images/subcategories_jewelery.jpg'),

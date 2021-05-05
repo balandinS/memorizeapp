@@ -61,6 +61,10 @@ export const forgotPasswordOptionNavigate = {
   ),
 };
 
+export const barStyleTab = {
+   backgroundColor: COLORS.white,
+   height: 54
+};
 const styles = StyleSheet.create({
   singup: {
     paddingHorizontal: 10,

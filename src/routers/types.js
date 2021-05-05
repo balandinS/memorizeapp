@@ -1,6 +1,11 @@
 // App
 export const APP_STACK = 'APP_STACK';
+
+export const HOME_STACK = 'HOME_STACK'
 export const HOME_SCREEN = 'HOME_SCREEN';
+export const EXPLORE_SCREEN = 'EXPLORE_SCREEN';
+export const BOOKED_SCREEN = 'BOOKED_SCREEN';
+export const PROFILE_SCREEN = 'PROFILE_SCREEN';
 // LOGIN
 export const SIGNIN = 'SIGNIN';
 //SINGUP 
