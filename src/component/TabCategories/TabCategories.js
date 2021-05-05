@@ -8,6 +8,7 @@ import { dataTabsSelector } from '../../store/selector';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCategoriesAction } from '../../store/HomeScreen/HomeAction'
 import SubCategorie from '../SubCategorie'
+import PropTypes from 'prop-types'
 const Tab = createMaterialTopTabNavigator();
 
 const TAB_WOMEM = 'WOMEM';
@@ -74,6 +75,12 @@ const RenderTab = (props) => {
       <Text>{JSON.stringify(props)}</Text>
     </View>
   );
+}
+
+RenderTab.propTypes = {
+  data: PropTypes.object.isRequired,
+  navigation: PropTypes.object,
+  route: PropTypes.object
 }
 const TabCategories = () => {
   const dataTabs = useSelector(dataTabsSelector)

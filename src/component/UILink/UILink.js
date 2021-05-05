@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { COLORS } from '../../utilities/constans'
-
+import PropTypes from 'prop-types'
 const UILink = ({children}) => {
     return (
         <TouchableOpacity style={styles.container}>
@@ -10,6 +10,9 @@ const UILink = ({children}) => {
     )
 }
 
+UILink.propTypes = {
+    children: PropTypes.string.isRequired
+}
 export default UILink
 
 const styles = StyleSheet.create({
