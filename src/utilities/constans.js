@@ -15,7 +15,8 @@ export const COLORS = {
    graydark: 'rgb(174, 174, 174)',
    graylight: 'rgb(240, 239, 246)',
    graylightdark: 'rgb(139, 139, 143)', 
-   black_50: 'rgba(17 ,10, 8, .5)'
+   black_50: 'rgba(17 ,10, 8, .5)',
+   gray_navigation: 'rgb(199, 199, 199)'
 }
 
 export const SIGNIN_SCREEN_CONTENT = {
