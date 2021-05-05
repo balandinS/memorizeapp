@@ -19,7 +19,7 @@ const TAB_ACCESSORIES = 'ACCESSORIES';
 
 
 const RenderTab = (props) => {
-
+  
   const isFocus = useIsFocused()
   const dispatch = useDispatch()
   const fetch = useCallback(() => {
@@ -39,7 +39,34 @@ const RenderTab = (props) => {
         return null
       }
 
-      return <SubCategorie />
+      return(
+        <View style={{height: 200}}>
+          <ScrollView
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          scrollEventThrottle={200}
+        >
+          {
+            values.subcategories.map(item => {
+
+              return (
+                <View 
+                key={`${props.data.tabType}_${item.name}`}
+                style={styles.subcategoriesContainer}
+                >
+                   <SubCategorie subcategorie={item}/>
+                </View>
+                
+              )
+            })
+          }
+        </ScrollView>
+
+        </View>
+        
+      ) 
   }
   return(
     <View style={{backgroundColor: COLORS.white, flex: 1}}>
@@ -134,5 +161,10 @@ const styles = StyleSheet.create({
         width: 125,
         textAlign: 'center',
         color: 'rgb(199, 199, 199)'
+    },
+    subcategoriesContainer: {
+      height: 195,
+      width: 140,
+      margin: 5
     }
 });

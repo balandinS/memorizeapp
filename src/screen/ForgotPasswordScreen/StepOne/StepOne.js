@@ -8,6 +8,7 @@ import UIButton from '../../../component/Button'
 import { COLORS } from '../../../utilities/constans'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { forgotPasswordStep1 } from '../../../store/forgotPassword/ForgotPasswordAction'
+import PropTypes from 'prop-types'
 
 const StepOne = (props) => {
   
@@ -76,7 +77,9 @@ const StepOne = (props) => {
     </View>
   );
 };
-
+StepOne.propTypes = {
+  stepUp: PropTypes.func.isRequired
+}
 export default StepOne;
 
 const styles = StyleSheet.create({

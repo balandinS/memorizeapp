@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { forgotPasswordSelector } from '../../store/selector'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { COLORS } from '../../utilities/constans'
-
+import PropTypes from 'prop-types'
 const InputOtp = ({handleUpdateOtp, nextStep}) => {
     const userDetails = useSelector(forgotPasswordSelector)
     const [ otp , setOtp ] = useState([])
@@ -75,6 +75,10 @@ const InputOtp = ({handleUpdateOtp, nextStep}) => {
     )
 }
 
+InputOtp.propTypes = {
+    handleUpdateOtp: PropTypes.func.isRequired,
+    nextStep: PropTypes.func.isRequired,
+}
 export default InputOtp
 
 const styles = StyleSheet.create({

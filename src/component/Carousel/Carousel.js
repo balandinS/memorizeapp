@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {COLORS} from '../../utilities/constans';
 import {widthScreen} from '../../utilities/utilities';
+import PropTypes from 'prop-types'; 
 const ItemCarousel = (props) => {
   return (
     <View style={styles.carouselItem}>
@@ -90,6 +91,10 @@ const Carousel = (props) => {
     </View>
   );
 };
+
+Carousel.propTypes = {
+  itemsPerInterval: PropTypes.number.isRequired
+}
 
 export default Carousel;
 

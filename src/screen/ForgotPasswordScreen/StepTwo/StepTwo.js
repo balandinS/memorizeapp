@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, View} from 'react-native'
 import UILink from '../../../component/UILink'
 import InputOtp from '../../../component/InputOtp'
+import PropTypes from 'prop-types'
 const StepTwo = (props) => {
      const [otp, updateOtp] = useState('')
      const handleUpdateOtp = (updatedOtp) => {
@@ -20,7 +21,9 @@ const StepTwo = (props) => {
         </View>
     )
 }
-
+StepTwo.propTypes = {
+    stepUp: PropTypes.func.isRequired
+  }
 export default StepTwo
 
 const styles = StyleSheet.create({

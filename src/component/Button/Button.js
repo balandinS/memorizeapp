@@ -2,10 +2,11 @@ import React, {useRef} from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
 import { useSelector } from 'react-redux'
 import Text from '../Text';
-import {NOOP} from '../../utilities/utilities';
 import {COLORS} from '../../utilities/constans';
 import LottieView from 'lottie-react-native';
 import { isAppLoadingSelector } from '../../store/selector'
+import PropTypes from 'prop-types'
+
 const INITAIL_STYLE_BTN = {
   backgroundColor: COLORS.blackLight,
   borderRadius: 30,
@@ -24,16 +25,10 @@ const UIButton = ({
 
   const isLoading = useSelector(isAppLoadingSelector)
   const txtColor = useRef(!!textColor ? textColor : COLORS.white);
-  const handleOnPress = () => {
-    if (typeof onPress === 'function') {
-      onPress();
-    } else {
-      NOOP();
-    }
-  };
+  
   return (
     <TouchableOpacity
-      onPress={handleOnPress}
+      onPress={onPress}
       style={[styles.containerButton, propStyle, {opacity: isDisable || isLoading ? .5 : 1}]}
       disabled={isDisable || isLoading}>
       <View style={styles.btnCotnent}>
@@ -54,6 +49,16 @@ const UIButton = ({
     </TouchableOpacity>
   );
 };
+
+UIButton.propTypes = {
+   contnet: PropTypes.string,
+   onPress: PropTypes.func.isRequired,
+   textColor: PropTypes.string,
+   icon: PropTypes.elementType,
+   propStyle: PropTypes.object,
+   isDisable: PropTypes.bool
+
+}
 
 export default UIButton;
 

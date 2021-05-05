@@ -5,7 +5,7 @@ import {forgotPasswordStepThree} from '../../../component/InputText/validationSc
 import Input from '../../../component/InputText'
 import UIButton from '../../../component/Button'
 import { COLORS } from '../../../utilities/constans'
-
+import PropTypes from 'prop-types'
 const StepThree = (props) => {
 
   const nexStep = (vales) => {
@@ -72,7 +72,9 @@ const StepThree = (props) => {
     </View>
   );
 };
-
+StepThree.propTypes = {
+  stepUp: PropTypes.func.isRequired
+}
 export default StepThree;
 
 const styles = StyleSheet.create({

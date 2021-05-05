@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react'
 import { View, Animated, StyleSheet, Easing } from 'react-native'
 import { useFadeAnime, useTranslateAnime } from '../../utilities/hooks'
+import PropTypes from 'prop-types'
 const PADDING_VERTICAL = 8 ;
 const PADDING_HORIZONTAL = 5;
 const PADDING = 5;
@@ -17,6 +18,12 @@ export default function Text(props) {
             <Animated.Text style={[props.style, {opacity, transform:[{translateX}]}]}>{children}</Animated.Text>
         </View>
     )
+}
+
+
+Text.propTypes = {
+    children: PropTypes.string.isRequired,
+    style: PropTypes.object
 }
 
 const styles = StyleSheet.create({
