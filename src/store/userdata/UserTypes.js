@@ -1,8 +1,8 @@
-export const SIGNUP = 'SIGNUP'
-export const SIGNIN = 'SIGNOUT'
-export const SIGNOUT = 'SIGNOUT'
+export const SIGNUP = 'SIGNUP';
+export const SIGNIN = 'SIGNOUT';
+export const SIGNOUT = 'SIGNOUT';
 
-export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS'
+export const CLEAR_USER_DETAILS = 'CLEAR_USER_DETAILS';
 
 export const FACEBOOK_LOGIN = 'FACEBOOK_LOGIN';
 export const FACEBOOK_LOGOUT = 'FACEBOOK_LOGOUT';
@@ -14,9 +14,7 @@ export const EMAIL_LOGIN = 'EMAIL_LOGIN';
 export const EMAIL_LOGOUT = 'EMAIL_LOGOUT';
 export const EMAIL_SIGNUP = 'EMAIL_SIGNUP';
 
-
-export const START_INITAILIZING = 'START_INITAILIZING'
-export const END_INITAILIZING = 'END_INITAILIZING'
-
+export const START_INITAILIZING = 'START_INITAILIZING';
+export const END_INITAILIZING = 'END_INITAILIZING';
 
 export const META_NOTIFI = 'META_NOTIFI';

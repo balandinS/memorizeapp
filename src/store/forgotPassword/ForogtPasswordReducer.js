@@ -14,7 +14,7 @@ export default (state = INITAIL_STATE, action) => {
       return {...state, isLoading: true};
     case TYPES.END_LOADING:
       return {...state, isLoading: false};
-    
+
     case TYPES.SAVE_USER_DETAILS:
       console.log('reducer --> ', action);
       return {

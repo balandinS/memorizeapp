@@ -1,22 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
-import { StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import {forgotPasswordStepOne} from '../../../component/InputText/validationSchema';
-import Input from '../../../component/InputText'
-import UIButton from '../../../component/Button'
-import { COLORS } from '../../../utilities/constans'
+import Input from '../../../component/InputText';
+import UIButton from '../../../component/Button';
+import {COLORS} from '../../../utilities/constans';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import { forgotPasswordStep1 } from '../../../store/forgotPassword/ForgotPasswordAction'
-import PropTypes from 'prop-types'
+import {forgotPasswordStep1} from '../../../store/forgotPassword/ForgotPasswordAction';
+import PropTypes from 'prop-types';
 
 const StepOne = (props) => {
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const nexStep = (values) => {
-       dispatch(forgotPasswordStep1(values))
-       props.stepUp()
-  }
+    dispatch(forgotPasswordStep1(values));
+    props.stepUp();
+  };
   return (
     <View style={styles.conatiner}>
       <Formik
@@ -25,8 +24,7 @@ const StepOne = (props) => {
           phone: '',
         }}
         validationSchema={forgotPasswordStepOne}
-        onSubmit={nexStep}
-        >
+        onSubmit={nexStep}>
         {({
           values,
           handleChange,
@@ -38,7 +36,11 @@ const StepOne = (props) => {
         }) => (
           <View style={styles.containerSubmit}>
             <View style={styles.inputWrapp}>
-                <Icon name='envelope' size={25} style={{marginRight: 20, marginBottom: 15}}/>
+              <Icon
+                name="envelope"
+                size={25}
+                style={{marginRight: 20, marginBottom: 15}}
+              />
               <Input
                 label="email"
                 onEndEditing={() => setFieldTouched('email')}
@@ -52,7 +54,11 @@ const StepOne = (props) => {
             </View>
             <View style={styles.hr} />
             <View style={styles.inputWrapp}>
-                <Icon name='mobile' size={40} style={{marginRight: 20, marginBottom: 15}}/>
+              <Icon
+                name="mobile"
+                size={40}
+                style={{marginRight: 20, marginBottom: 15}}
+              />
               <Input
                 label="Phone"
                 onEndEditing={() => setFieldTouched('phone')}
@@ -64,13 +70,15 @@ const StepOne = (props) => {
                 }}
               />
             </View>
-            
+
             <View style={styles.hr} />
             <View style={{marginTop: 40}}>
-               <UIButton onPress={handleSubmit} isDisable={!isValid}  contnet="Send" />
+              <UIButton
+                onPress={handleSubmit}
+                isDisable={!isValid}
+                contnet="Send"
+              />
             </View>
-            
-           
           </View>
         )}
       </Formik>
@@ -78,8 +86,8 @@ const StepOne = (props) => {
   );
 };
 StepOne.propTypes = {
-  stepUp: PropTypes.func.isRequired
-}
+  stepUp: PropTypes.func.isRequired,
+};
 export default StepOne;
 
 const styles = StyleSheet.create({
@@ -91,16 +99,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   hr: {
     height: 2,
-    backgroundColor: COLORS.gray
+    backgroundColor: COLORS.gray,
   },
   containerSubmit: {
     marginTop: 20,
-    flex: .5,
+    flex: 0.5,
     justifyContent: 'center',
     paddingHorizontal: 8,
-  }
+  },
 });

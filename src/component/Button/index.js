@@ -1,3 +1,3 @@
 import UIButton from './Button';
 
-export default UIButton
+export default UIButton;

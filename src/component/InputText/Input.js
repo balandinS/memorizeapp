@@ -10,7 +10,7 @@ import {
 import Text from '../Text';
 import {COLORS} from '../../utilities/constans';
 import {SIGNIN, SIGNUP} from '../../routers/types';
-import { useRoute } from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 
 const Input = (props) => {
   const [isFocus, setIsFocus] = useState(false);
@@ -29,7 +29,6 @@ const Input = (props) => {
   });
 
   const route = useRoute();
-
 
   return (
     <View style={styles.container}>

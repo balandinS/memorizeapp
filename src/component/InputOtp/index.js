@@ -1,3 +1,3 @@
-import InputOtp from './InputOtp'
+import InputOtp from './InputOtp';
 
 export default InputOtp;

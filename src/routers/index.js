@@ -18,12 +18,12 @@ const RootStack = createStackNavigator();
 
 const RootNavigator = () => {
   const userInfo = useSelector(userInfoSelector);
-  
+
   return (
     <RootStack.Navigator
       headerMode="float"
       screenOptions={{...FadeInOutAnimation}}>
-      {!userInfo.refreshToken  ? (
+      {userInfo.refreshToken ? (
         <>
           <RootStack.Screen
             name={TYPES.SIGNIN}

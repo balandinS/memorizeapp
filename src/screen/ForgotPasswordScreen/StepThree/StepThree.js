@@ -1,17 +1,16 @@
 import React from 'react';
-import { StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import {forgotPasswordStepThree} from '../../../component/InputText/validationSchema';
-import Input from '../../../component/InputText'
-import UIButton from '../../../component/Button'
-import { COLORS } from '../../../utilities/constans'
-import PropTypes from 'prop-types'
+import Input from '../../../component/InputText';
+import UIButton from '../../../component/Button';
+import {COLORS} from '../../../utilities/constans';
+import PropTypes from 'prop-types';
 const StepThree = (props) => {
-
   const nexStep = (vales) => {
-      console.log(vales)
-      props.stepUp()
-  }
+    console.log(vales);
+    props.stepUp();
+  };
   return (
     <View style={styles.conatiner}>
       <Formik
@@ -20,8 +19,7 @@ const StepThree = (props) => {
           passwordConfirm: '',
         }}
         validationSchema={forgotPasswordStepThree}
-        onSubmit={nexStep}
-        >
+        onSubmit={nexStep}>
         {({
           values,
           handleChange,
@@ -59,13 +57,15 @@ const StepThree = (props) => {
                 }}
               />
             </View>
-            
+
             <View style={styles.hr} />
             <View style={{marginTop: 40}}>
-               <UIButton onPress={handleSubmit} isDisable={!isValid}  contnet="Reset Password" />
+              <UIButton
+                onPress={handleSubmit}
+                isDisable={!isValid}
+                contnet="Reset Password"
+              />
             </View>
-            
-           
           </View>
         )}
       </Formik>
@@ -73,8 +73,8 @@ const StepThree = (props) => {
   );
 };
 StepThree.propTypes = {
-  stepUp: PropTypes.func.isRequired
-}
+  stepUp: PropTypes.func.isRequired,
+};
 export default StepThree;
 
 const styles = StyleSheet.create({
@@ -86,16 +86,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   hr: {
     height: 2,
-    backgroundColor: COLORS.gray
+    backgroundColor: COLORS.gray,
   },
   containerSubmit: {
     marginTop: 20,
-    flex: .5,
+    flex: 0.5,
     justifyContent: 'center',
     paddingHorizontal: 8,
-  }
+  },
 });

@@ -3,12 +3,16 @@ import {StyleSheet, View, ImageBackground} from 'react-native';
 import img from '../../assessts/images/headerImagejpg.jpg';
 import Text from '../Text';
 import {COLORS} from '../../utilities/constans';
-import Carousel from '../Carousel'
+import Carousel from '../Carousel';
 const HeaderWithImage = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground blurRadius={10} style={{height: 700}} source={img} fadeDuration={2}>
-          <Carousel itemsPerInterval={1}/>
+      <ImageBackground
+        blurRadius={10}
+        style={{height: 700}}
+        source={img}
+        fadeDuration={2}>
+        <Carousel itemsPerInterval={1} />
       </ImageBackground>
     </View>
   );
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: 'bold',
     color: COLORS.white,
-    padding: 5
+    padding: 5,
   },
   text: {
     textAlign: 'center',

@@ -25,16 +25,8 @@ const TopHeader = (props) => {
         />
       </TouchableOpacity>
       <View style={styles.iconContainer}>
-        <Icon
-          name="heart-o"
-          size={21}
-          color={COLORS.black}
-        />
-        <Icon
-          name="shopping-bag"
-          size={21}
-          color={COLORS.black}
-        />
+        <Icon name="heart-o" size={21} color={COLORS.black} />
+        <Icon name="shopping-bag" size={21} color={COLORS.black} />
       </View>
     </View>
   );
@@ -47,16 +39,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 50,
     backgroundColor: COLORS.white,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   hamburgerContainer: {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    height: 50
+    height: 50,
   },
   hamburger: {
-      height: 60,
-      width: 60
+    height: 60,
+    width: 60,
   },
   iconContainer: {
     flexDirection: 'row',
@@ -64,6 +56,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     width: 120,
-    paddingHorizontal: 10
-  }
+    paddingHorizontal: 10,
+  },
 });

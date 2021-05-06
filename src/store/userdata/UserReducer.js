@@ -5,8 +5,7 @@ import {
   START_INITAILIZING,
   END_INITAILIZING,
   CLEAR_USER_DETAILS,
-  META_NOTIFI
-
+  META_NOTIFI,
 } from './UserTypes';
 import {REHYDRATE} from 'redux-persist';
 const intailState = {
@@ -14,7 +13,7 @@ const intailState = {
   initializing: false,
   details: {},
   metaNotifi: {},
-  notification: {}
+  notification: {},
 };
 
 export default (state = intailState, action) => {
@@ -22,40 +21,40 @@ export default (state = intailState, action) => {
     case SIGNIN:
       return {
         ...state,
-        isLogin: true ,
-        details: {...action.payload}
+        isLogin: true,
+        details: {...action.payload},
       };
     case SIGNUP:
       return {
         ...state,
-        isLogin: true ,
-        details: {...action.payload}
+        isLogin: true,
+        details: {...action.payload},
       };
     case SIGNOUT:
       return {...intailState};
-    case START_INITAILIZING: 
+    case START_INITAILIZING:
       return {
         ...state,
-        intailState: true
-      }
-      case START_INITAILIZING: 
+        intailState: true,
+      };
+    case START_INITAILIZING:
       return {
         ...state,
-        intailState: true
-      }
-      case END_INITAILIZING: 
+        intailState: true,
+      };
+    case END_INITAILIZING:
       return {
         ...state,
-        intailState: false
-      }
+        intailState: false,
+      };
     case META_NOTIFI: {
-      return { 
-        ...state, 
-        metaNotifi: action.payload
-      }
+      return {
+        ...state,
+        metaNotifi: action.payload,
+      };
     }
     case CLEAR_USER_DETAILS: {
-     return  {...intailState}
+      return {...intailState};
     }
     // case REHYDRATE:
     //   console.log('persist');

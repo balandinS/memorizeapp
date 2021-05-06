@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Formik} from 'formik';
 import Text from '../../component/Text';
@@ -8,22 +8,24 @@ import UIButton from '../../component/Button';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {COLORS, SIGNIN_SCREEN_CONTENT} from '../../utilities/constans';
 import {signinScheme} from '../../component/InputText/validationSchema';
-import { useNavigation } from '@react-navigation/native';
-import { SIGNUP, FORGOT_PASSWORD } from '../../routers/types'
-import { useColorSafeArea } from '../../utilities/hooks'
-import { loginSocailFacebookAction, signinWithEmailAndPasswordAction } from '../../store/userdata/UserAction'
-import * as TYPES from '../../store/userdata/UserTypes'
-const SigninScreen = (props) => { 
-
+import {useNavigation} from '@react-navigation/native';
+import {SIGNUP, FORGOT_PASSWORD} from '../../routers/types';
+import {useColorSafeArea} from '../../utilities/hooks';
+import {
+  loginSocailFacebookAction,
+  signinWithEmailAndPasswordAction,
+} from '../../store/userdata/UserAction';
+import * as TYPES from '../../store/userdata/UserTypes';
+const SigninScreen = (props) => {
   const navigation = useNavigation();
-  const dispatch = useDispatch()
-  useColorSafeArea(COLORS.beige)
-  const handleSignup = () => navigation.navigate(SIGNUP)
-  const handleForgotPassword = () => navigation.navigate(FORGOT_PASSWORD)
-  const handleLoginFaceBook = () => dispatch(loginSocailFacebookAction())
-  const onSubmitAction = values => {
-    dispatch(signinWithEmailAndPasswordAction(values.email, values.password))
-  }
+  const dispatch = useDispatch();
+  useColorSafeArea(COLORS.beige);
+  const handleSignup = () => navigation.navigate(SIGNUP);
+  const handleForgotPassword = () => navigation.navigate(FORGOT_PASSWORD);
+  const handleLoginFaceBook = () => dispatch(loginSocailFacebookAction());
+  const onSubmitAction = (values) => {
+    dispatch(signinWithEmailAndPasswordAction(values.email, values.password));
+  };
   return (
     <View style={styles.container}>
       <View style={styles.containerTitle}>
@@ -82,10 +84,19 @@ const SigninScreen = (props) => {
                 style={{
                   marginTop: 20,
                   height: 110,
-                  justifyContent: 'space-around'
+                  justifyContent: 'space-around',
                 }}>
-                <UIButton onPress={handleSubmit} contnet="Log In" isDisable={!isValid}/>
-                <UIButton onPress={handleSignup}  propStyle={styles.signup} contnet="Sign Up" textColor={COLORS.blackLight}/>
+                <UIButton
+                  onPress={handleSubmit}
+                  contnet="Log In"
+                  isDisable={!isValid}
+                />
+                <UIButton
+                  onPress={handleSignup}
+                  propStyle={styles.signup}
+                  contnet="Sign Up"
+                  textColor={COLORS.blackLight}
+                />
               </View>
               <View style={styles.descriptionConatiner}>
                 <Text style={styles.description}>
@@ -93,7 +104,6 @@ const SigninScreen = (props) => {
                 </Text>
                 <View style={styles.socailGroup}>
                   <UIButton
-                  
                     propStyle={styles.facebookBtn}
                     onPress={handleLoginFaceBook}
                     icon={
@@ -107,7 +117,6 @@ const SigninScreen = (props) => {
                   />
                   <UIButton
                     propStyle={styles.googleBtn}
-                    
                     icon={
                       <Icon
                         name="google"
@@ -157,7 +166,7 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.3,
-    elevation: 1
+    elevation: 1,
   },
   containerButtom: {
     flex: 1,

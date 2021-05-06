@@ -1,14 +1,15 @@
 import React, {useEffect, useCallback} from 'react';
-import { useIsFocused } from '@react-navigation/native'
+import {useIsFocused} from '@react-navigation/native';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {FadeInOutAnimation} from '../../routers/config';
 import {COLORS} from '../../utilities/constans';
-import { dataTabsSelector } from '../../store/selector';
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesAction } from '../../store/HomeScreen/HomeAction'
-import SubCategorie from '../SubCategorie'
-import PropTypes from 'prop-types'
+import {dataTabsSelector} from '../../store/selector';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchCategoriesAction} from '../../store/HomeScreen/HomeAction';
+import SubCategorie from '../SubCategorie';
+import PropTypes from 'prop-types';
+import {scale, verticalScale} from '../../utilities/screenUtilities';
 const Tab = createMaterialTopTabNavigator();
 
 const TAB_WOMEM = 'WOMEM';
@@ -17,76 +18,65 @@ const TAB_CHILDREN = 'CHILDREN';
 const TAB_SHOES = 'SHOES';
 const TAB_ACCESSORIES = 'ACCESSORIES';
 
-
-
 const RenderTab = (props) => {
-  
-  const isFocus = useIsFocused()
-  const dispatch = useDispatch()
+  const isFocus = useIsFocused();
+  const dispatch = useDispatch();
   const fetch = useCallback(() => {
-      dispatch(fetchCategoriesAction(props.data.tabLabel))
-  },[props.data])
+    dispatch(fetchCategoriesAction(props.data.tabLabel));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.data]);
 
   useEffect(() => {
-    if(isFocus){
-      fetch()
+    if (isFocus) {
+      fetch();
     }
-    
-  },[isFocus])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocus]);
 
   const renderSubcategories = () => {
-      const { values } = props.data
-      if(values.subcategories.length === 0) {
-        return null
-      }
+    const {values} = props.data;
+    if (values.subcategories.length === 0) {
+      return null;
+    }
 
-      return(
-        <View style={{height: 200}}>
-          <ScrollView
+    return (
+      <View style={{height: verticalScale(200)}}>
+        <ScrollView
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           decelerationRate="fast"
-          scrollEventThrottle={200}
-        >
-          {
-            values.subcategories.map(item => {
-
-              return (
-                <View 
+          scrollEventThrottle={200}>
+          {values.subcategories.map((item) => {
+            return (
+              <View
                 key={`${props.data.tabType}_${item.name}`}
-                style={styles.subcategoriesContainer}
-                >
-                   <SubCategorie subcategorie={item}/>
-                </View>
-                
-              )
-            })
-          }
+                style={styles.subcategoriesContainer}>
+                <SubCategorie subcategorie={item} />
+              </View>
+            );
+          })}
         </ScrollView>
-
-        </View>
-        
-      ) 
-  }
-  return(
+      </View>
+    );
+  };
+  return (
     <View style={{backgroundColor: COLORS.white, flex: 1}}>
-       {renderSubcategories()}
+      {renderSubcategories()}
       <Text>{JSON.stringify(props)}</Text>
     </View>
   );
-}
+};
 
 RenderTab.propTypes = {
   data: PropTypes.object.isRequired,
   navigation: PropTypes.object,
-  route: PropTypes.object
-}
+  route: PropTypes.object,
+};
 const TabCategories = () => {
-  const dataTabs = useSelector(dataTabsSelector)
+  const dataTabs = useSelector(dataTabsSelector);
   return (
     <Tab.Navigator
-     
       initialRouteName={TAB_WOMEM}
       screenOptions={{
         ...FadeInOutAnimation,
@@ -99,41 +89,39 @@ const TabCategories = () => {
           height: 0,
         },
         labelStyle: {
-            fontSize: 14,
-            textAlign: 'center',
+          fontSize: 14,
+          textAlign: 'center',
         },
-        style:{
-            borderBottomColor: COLORS.graydark,
-            borderTopColor: COLORS.graydark,
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            backgroundColor: COLORS.graywhithe,
-            height: 55,
-            justifyContent: 'center'
-         }
+        style: {
+          borderBottomColor: COLORS.graydark,
+          borderTopColor: COLORS.graydark,
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          backgroundColor: COLORS.graywhithe,
+          height: verticalScale(55),
+          justifyContent: 'center',
+        },
       }}>
       {dataTabs.map((data, index) => {
-
-          return (
-              <Tab.Screen
-               key={data.tabType+index}
-               name={data.tabType}
-               children={(props) => <RenderTab data={data} {...props}/>}
-               options={{
-                   tabBarLabel: ({ tintColor, focused, activeTintColor }) => (
-                    focused ? 
-                    <View style={styles.activeTabContainer}>
-                        <Text style={styles.activeTab}>{data.tabLabel}</Text>
-                    </View>
-                   
-                    :
-                    <View style={styles.inactiveTabContainer}>
-                        <Text style={styles.inactiveTab}>{data.tabLabel}</Text>
-                    </View>
-                   ) ,
-               }}
-              />
-          )
+        return (
+          <Tab.Screen
+            key={data.tabType + index}
+            name={data.tabType}
+            children={(props) => <RenderTab data={data} {...props} />}
+            options={{
+              tabBarLabel: ({tintColor, focused, activeTintColor}) =>
+                focused ? (
+                  <View style={styles.activeTabContainer}>
+                    <Text style={styles.activeTab}>{data.tabLabel}</Text>
+                  </View>
+                ) : (
+                  <View style={styles.inactiveTabContainer}>
+                    <Text style={styles.inactiveTab}>{data.tabLabel}</Text>
+                  </View>
+                ),
+            }}
+          />
+        );
       })}
     </Tab.Navigator>
   );
@@ -142,36 +130,36 @@ const TabCategories = () => {
 export default TabCategories;
 
 const styles = StyleSheet.create({
-    activeTabContainer: {
-        width: 125,
-        height: 30,
-        overflow: 'hidden',
-        backgroundColor: COLORS.graylightdark,
-        borderRadius: 20,
-        justifyContent: 'center'
-    },
-    activeTab: {
-        fontSize: 15,
-        width: 125,
-        color: COLORS.white,
-        textAlign: 'center'
-    },
-    inactiveTabContainer: {
-        width: 125,
-        height: 30,
-        overflow: 'hidden',
-        borderRadius: 20,
-        justifyContent: 'center'
-    },
-    inactiveTab: {
-        fontSize: 15,
-        width: 125,
-        textAlign: 'center',
-        color: 'rgb(199, 199, 199)'
-    },
-    subcategoriesContainer: {
-      height: 195,
-      width: 140,
-      margin: 5
-    }
+  activeTabContainer: {
+    width: scale(125),
+    height: verticalScale(30),
+    overflow: 'hidden',
+    backgroundColor: COLORS.graylightdark,
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  activeTab: {
+    fontSize: 15,
+    width: scale(125),
+    color: COLORS.white,
+    textAlign: 'center',
+  },
+  inactiveTabContainer: {
+    width: scale(125),
+    height: verticalScale(30),
+    overflow: 'hidden',
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  inactiveTab: {
+    fontSize: 15,
+    width: scale(125),
+    textAlign: 'center',
+    color: 'rgb(199, 199, 199)',
+  },
+  subcategoriesContainer: {
+    height: verticalScale(195),
+    width: scale(140),
+    margin: 5,
+  },
 });

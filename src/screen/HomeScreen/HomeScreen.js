@@ -1,17 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux';
 import {StyleSheet, View} from 'react-native';
 import {COLORS} from '../../utilities/constans';
 import TabCategories from '../../component/TabCategories';
 import HeaderWithImage from '../../component/HeaderWithImage';
 import Text from '../../component/Text';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import { selectedTabSelector } from '../../store/selector'
+import {selectedTabSelector} from '../../store/selector';
+import {verticalScale} from '../../utilities/screenUtilities';
 const HomeScreen = () => {
-  const selectedTab = useSelector(selectedTabSelector)
+  const selectedTab = useSelector(selectedTabSelector);
   return (
     <View style={styles.container}>
-      <View style={{height: 250}}>
+      <View style={{height: verticalScale(250)}}>
         <HeaderWithImage />
       </View>
       <View style={styles.titleConatiner}>
@@ -45,10 +46,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     color: COLORS.black,
-    fontWeight: '600'
+    fontWeight: '600',
   },
   subtitle: {
-      fontSize: 12,
-      color: COLORS.graydark
-  }
+    fontSize: 12,
+    color: COLORS.graydark,
+  },
 });

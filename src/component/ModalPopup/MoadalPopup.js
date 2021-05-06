@@ -18,31 +18,30 @@ import {
   isModalVisableSelector,
   modalIsClosebleSelector,
   modalOkBtnSelector,
-  modalCancelBtnSelector
+  modalCancelBtnSelector,
 } from '../../store/selector';
-import { setVisableModalAction } from '../../store/modalPopup/popupAction'
+import {setVisableModalAction} from '../../store/modalPopup/popupAction';
 const MoadalPopup = () => {
-
   const isModalVisable = useSelector(isModalVisableSelector);
   const modalTitle = useSelector(modalTitleSelector);
   const modalContent = useSelector(modalContentSelector);
-  const closebale = useSelector(modalIsClosebleSelector)
+  const closebale = useSelector(modalIsClosebleSelector);
   const modalOkBtn = useSelector(modalOkBtnSelector);
-  const modalCancel= useSelector(modalCancelBtnSelector)
+  const modalCancel = useSelector(modalCancelBtnSelector);
   const dispatch = useDispatch();
 
-  const setVisableModal = value => {
-    dispatch(setVisableModalAction(value))
-  }
+  const setVisableModal = (value) => {
+    dispatch(setVisableModalAction(value));
+  };
 
-  const hideModal = () =>  {
-    setVisableModal(false)
-  }
+  const hideModal = () => {
+    setVisableModal(false);
+  };
   const renderOneBtnModal = () => {
     const okPress = () => {
-      modalOkBtn && modalOkBtn()
-      hideModal()
-    }
+      modalOkBtn && modalOkBtn();
+      hideModal();
+    };
 
     return (
       <View style={{flex: 1, padding: 0}}>
@@ -57,7 +56,7 @@ const MoadalPopup = () => {
         </View>
       </View>
     );
-  }
+  };
   const renderModalByType = (modalType) => {
     switch (modalType) {
       case MODAL_TYPES.oneBtnVer:

@@ -4,28 +4,32 @@ import {
   signinAction,
   startInitializing,
   endInitializing,
-  resetUserDitailsAction
+  resetUserDitailsAction,
 } from './UserAction.js';
-import { logoutFaceBook, accessToken } from '../../utilities/facebookTools'
-import { startLoadingAppAction, endLoadingAppAction } from '../ui/UiAction'
-import { createUserWithEmail, signinWithEmailAndPassword , NOOP } from '../../utilities/utilities'
-import { updateModalProps } from '../modalPopup/popupAction'
+import {logoutFaceBook, accessToken} from '../../utilities/facebookTools';
+import {startLoadingAppAction, endLoadingAppAction} from '../ui/UiAction';
+import {
+  createUserWithEmail,
+  signinWithEmailAndPassword,
+  NOOP,
+} from '../../utilities/utilities';
+import {updateModalProps} from '../modalPopup/popupAction';
 
 const claerDetials = function* () {
-  yield put(resetUserDitailsAction())
-}
+  yield put(resetUserDitailsAction());
+};
 const modalError = function* (modalContent) {
   const payload = {
     isModalVisable: true,
     modalTile: 'Error Message',
-    modalContent
-  }
-  yield put(updateModalProps(payload))
-}
+    modalContent,
+  };
+  yield put(updateModalProps(payload));
+};
 
 const loginSocailFacebook = function* () {
   yield put(startLoadingAppAction());
-  const {user}  = yield call(accessToken);
+  const {user} = yield call(accessToken);
   yield put(signinAction(user._user));
   yield put(endLoadingAppAction());
 };
@@ -37,33 +41,41 @@ const logoutSocailFacebook = function* () {
   });
 };
 
-const signupWithEmail =function* ({type, payload}) {
-    yield put(startLoadingAppAction())
-    yield put(startInitializing())
-    try {
-      const user = yield call(createUserWithEmail,payload.email, payload.password,)
-      yield put(signinAction(user._user));
-    } catch (error) {
-     yield call(modalError, error)
-    } finally{
-      yield put(endInitializing())
-      yield put(endLoadingAppAction())
-    } 
-}
-const signinWithEmail =function* ({type, payload}) {
-  yield put(startLoadingAppAction())
+const signupWithEmail = function* ({type, payload}) {
+  yield put(startLoadingAppAction());
+  yield put(startInitializing());
   try {
-    const user = yield call(signinWithEmailAndPassword, payload.email, payload.password,)
+    const user = yield call(
+      createUserWithEmail,
+      payload.email,
+      payload.password,
+    );
     yield put(signinAction(user._user));
   } catch (error) {
-   yield call(modalError, error)
-  } finally{
-    yield put(endLoadingAppAction())
-  } 
-}
+    yield call(modalError, error);
+  } finally {
+    yield put(endInitializing());
+    yield put(endLoadingAppAction());
+  }
+};
+const signinWithEmail = function* ({type, payload}) {
+  yield put(startLoadingAppAction());
+  try {
+    const user = yield call(
+      signinWithEmailAndPassword,
+      payload.email,
+      payload.password,
+    );
+    yield put(signinAction(user._user));
+  } catch (error) {
+    yield call(modalError, error);
+  } finally {
+    yield put(endLoadingAppAction());
+  }
+};
 export default function* userSaga() {
   yield takeLatest(TYPES.FACEBOOK_LOGIN, loginSocailFacebook);
   yield takeLatest(TYPES.FACEBOOK_LOGOUT, logoutSocailFacebook);
-  yield takeLatest(TYPES.EMAIL_SIGNUP, signupWithEmail)
-  yield takeLatest(TYPES.EMAIL_LOGIN, signinWithEmail)
+  yield takeLatest(TYPES.EMAIL_SIGNUP, signupWithEmail);
+  yield takeLatest(TYPES.EMAIL_LOGIN, signinWithEmail);
 }

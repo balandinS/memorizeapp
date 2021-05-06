@@ -15,26 +15,30 @@ function HomeStack() {
       inactiveColor={COLORS.gray_navigation}
       barStyle={barStyleTab}
       shifting={true}
-      backBehavior='initialRoute'
+      backBehavior="initialRoute"
       labeled>
       <Tab.Screen
         options={{
-          tabBarIcon: ({focused, color}) => <Icon name='bolt' color={color}  size={focused? 18 : 24}/>,
+          tabBarIcon: ({focused, color}) => (
+            <Icon name="bolt" color={color} size={focused ? 18 : 24} />
+          ),
           tabBarLabel: 'Shop',
           barStyleTab: {
-              flex: 1
-          }
+            flex: 1,
+          },
         }}
         name={TYPES.HOME_SCREEN}
         component={HomeScreen}
       />
       <Tab.Screen
         options={{
-          tabBarIcon: ({focused, color}) => <Icon name='eye' color={color}  size={focused? 18 : 24}/>,
+          tabBarIcon: ({focused, color}) => (
+            <Icon name="eye" color={color} size={focused ? 18 : 24} />
+          ),
           tabBarLabel: 'Explore',
           barStyleTab: {
-              flex: 1
-          }
+            flex: 1,
+          },
         }}
         name={TYPES.EXPLORE_SCREEN}
         component={HomeScreen}
@@ -42,22 +46,25 @@ function HomeStack() {
       <Tab.Screen
         options={{
           tabBarLabel: 'Booked',
-          tabBarIcon: ({focused, color}) => <Icon name='bookmark' color={color}  size={focused? 18 : 24}/>,
+          tabBarIcon: ({focused, color}) => (
+            <Icon name="bookmark" color={color} size={focused ? 18 : 24} />
+          ),
           barStyleTab: {
-              flex: 1
-          }
-          
+            flex: 1,
+          },
         }}
         name={TYPES.BOOKED_SCREEN}
         component={HomeScreen}
       />
       <Tab.Screen
         options={{
-            tabBarLabel: 'Profile',
-            tabBarIcon: ({focused, color}) => <Icon name='user-circle' color={color}  size={focused? 18 : 24}/>,
-            barStyleTab: {
-                flex: 1
-            }
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({focused, color}) => (
+            <Icon name="user-circle" color={color} size={focused ? 18 : 24} />
+          ),
+          barStyleTab: {
+            flex: 1,
+          },
         }}
         name={TYPES.PROFILE_SCREEN}
         component={HomeScreen}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeStack from './HomeStack';
-import { HOME_STACK } from './types';
+import {HOME_STACK} from './types';
 import TopHeader from '../component/TopHeader';
-import { COLORS } from '../utilities/constans'
-import DrawerSideMenu from '../component/DrawerSideMenu'
+import {COLORS} from '../utilities/constans';
+import DrawerSideMenu from '../component/DrawerSideMenu';
 
 const Drawer = createDrawerNavigator();
 const AppStack = ({navigation}) => {
@@ -16,7 +16,7 @@ const AppStack = ({navigation}) => {
         gestureEnabled: true,
       }}
       initialRouteName={HOME_STACK}
-      drawerContent={(props) => <DrawerSideMenu  {...props} />}
+      drawerContent={(props) => <DrawerSideMenu {...props} />}
       drawerStyle={{width: 250}}
       drawerContentOptions={{
         activeTintColor: COLORS.black,

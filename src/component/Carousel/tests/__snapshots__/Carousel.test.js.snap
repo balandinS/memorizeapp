@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "width": "100%",
+      }
+    }
+    decelerationRate="fast"
+    horizontal={true}
+    onContentSizeChange={[Function]}
+    onScroll={[Function]}
+    pagingEnabled={true}
+    scrollEventThrottle={200}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "height": 416.6666666666667,
+            "width": 750,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "height": 416.6666666666667,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 36,
+                "fontWeight": "bold",
+                "padding": 5,
+                "textAlign": "center",
+              }
+            }
+          >
+            Women Collection
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 16,
+                "fontWeight": "500",
+                "textAlign": "center",
+              }
+            }
+          >
+            Rich selection for choosing clothes
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 416.6666666666667,
+            "width": 750,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "height": 416.6666666666667,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 36,
+                "fontWeight": "bold",
+                "padding": 5,
+                "textAlign": "center",
+              }
+            }
+          >
+            Men Collection
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 16,
+                "fontWeight": "500",
+                "textAlign": "center",
+              }
+            }
+          >
+            Rich selection for choosing clothes
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 416.6666666666667,
+            "width": 750,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "height": 416.6666666666667,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 36,
+                "fontWeight": "bold",
+                "padding": 5,
+                "textAlign": "center",
+              }
+            }
+          >
+            Child Collection
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "rgb(255,255,255)",
+                "fontSize": 16,
+                "fontWeight": "500",
+                "textAlign": "center",
+              }
+            }
+          >
+            Rich selection for choosing clothes
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 104.16666666666667,
+        "justifyContent": "flex-end",
+        "paddingHorizontal": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(255,255,255)",
+          "borderRadius": 3.5,
+          "height": 14.583333333333334,
+          "margin": 5,
+          "opacity": 0.7,
+          "transform": Array [
+            Object {
+              "scale": 1.5,
+            },
+          ],
+          "width": 14.583333333333334,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(247,247,247)",
+          "borderRadius": 3.5,
+          "height": 14.583333333333334,
+          "margin": 5,
+          "opacity": 0.4,
+          "width": 14.583333333333334,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(247,247,247)",
+          "borderRadius": 3.5,
+          "height": 14.583333333333334,
+          "margin": 5,
+          "opacity": 0.4,
+          "width": 14.583333333333334,
+        }
+      }
+    />
+  </View>
+</View>
+`;

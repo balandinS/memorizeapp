@@ -1,3 +1,3 @@
-import SubCategories from './SubCategories'
+import SubCategories from './SubCategories';
 
 export default SubCategories;

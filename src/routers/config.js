@@ -33,7 +33,7 @@ export const signupOptionNavigate = {
     shadowOffset: {
       width: 0,
       height: 0,
-    }
+    },
   },
   headerTitle: '',
   headerLeft: (props) => (
@@ -51,7 +51,7 @@ export const forgotPasswordOptionNavigate = {
     shadowOffset: {
       width: 0,
       height: 0,
-    }
+    },
   },
   headerTitle: '',
   headerLeft: (props) => (
@@ -62,8 +62,8 @@ export const forgotPasswordOptionNavigate = {
 };
 
 export const barStyleTab = {
-   backgroundColor: COLORS.white,
-   height: 54
+  backgroundColor: COLORS.white,
+  height: 54,
 };
 const styles = StyleSheet.create({
   singup: {

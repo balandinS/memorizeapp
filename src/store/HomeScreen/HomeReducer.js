@@ -14,7 +14,7 @@ const INITAIL_STATE = {
       tabLabel: 'Women',
       values: {
         fetchData: 'women',
-        subcategories: []
+        subcategories: [],
       },
     },
     {
@@ -22,7 +22,7 @@ const INITAIL_STATE = {
       tabLabel: 'Men',
       values: {
         fetchData: 'Men',
-        subcategories: []
+        subcategories: [],
       },
     },
     {
@@ -33,11 +33,11 @@ const INITAIL_STATE = {
         subcategories: [
           {
             name: 'Childrens',
-            image: require('../../assessts/images/subcategories_children.jpg')
+            image: require('../../assessts/images/subcategories_children.jpg'),
           },
           {
             name: 'Babys',
-            image: require('../../assessts/images/subcategories_baby.jpg')
+            image: require('../../assessts/images/subcategories_baby.jpg'),
           },
         ],
       },
@@ -47,7 +47,7 @@ const INITAIL_STATE = {
       tabLabel: 'Shoes',
       values: {
         fetchData: 'shoes',
-        subcategories: []
+        subcategories: [],
       },
     },
     {
@@ -67,7 +67,7 @@ const INITAIL_STATE = {
           {
             name: 'Bags',
             image: require('../../assessts/images/subcategories_bags.jpg'),
-          },      
+          },
           {
             name: 'Jewelerys',
             image: require('../../assessts/images/subcategories_jewelery.jpg'),

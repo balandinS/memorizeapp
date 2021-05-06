@@ -78,15 +78,16 @@ const SignupScreen = (props) => {
                         touched.password &&
                           !errors.password && {color: COLORS.green},
                       ]}>
-                     number and characters 8 symbol
+                      number and characters 8 symbol
                     </Text>
-                    {
-                      touched.password &&
-                      !errors.password && (
-                        <LottieView loop={false} autoPlay style={{height: 35, width:35}} source={require('../../assessts/animations/successAnimation.json')}/>
-                      )
-                    }
-                    
+                    {touched.password && !errors.password && (
+                      <LottieView
+                        loop={false}
+                        autoPlay
+                        style={{height: 35, width: 35}}
+                        source={require('../../assessts/animations/successAnimation.json')}
+                      />
+                    )}
                   </View>
                 </View>
 

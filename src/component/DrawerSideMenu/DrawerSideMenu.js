@@ -6,7 +6,7 @@ import {userInfoSelector} from '../../store/selector';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem
+  DrawerItem,
 } from '@react-navigation/drawer';
 
 const Avatar = () => {

@@ -70,8 +70,7 @@ export const forgotPasswordStepOne = () =>
       .required('Required field'),
   });
 
-
-  export const forgotPasswordStepThree = () =>
+export const forgotPasswordStepThree = () =>
   yup.object().shape({
     passwordNew: yup
       .string()

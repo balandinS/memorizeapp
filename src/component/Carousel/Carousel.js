@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {COLORS} from '../../utilities/constans';
 import {widthScreen} from '../../utilities/utilities';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+import {scale, verticalScale} from '../../utilities/screenUtilities';
 const ItemCarousel = (props) => {
+  console.log('verticalScale(150) -->', (414 / 360) * 200);
   return (
     <View style={styles.carouselItem}>
       <View style={styles.textContainer}>
@@ -13,9 +15,6 @@ const ItemCarousel = (props) => {
     </View>
   );
 };
-
-// 
-
 
 const Carousel = (props) => {
   const itemsPerInterval =
@@ -50,7 +49,7 @@ const Carousel = (props) => {
         console.log('offset < (width / intervals) --> ', intervals);
         return i;
       }
-      if (i == intervals) {
+      if (i === intervals) {
         console.log('offset == (width / intervals) --> ', intervals);
         return i;
       }
@@ -60,14 +59,15 @@ const Carousel = (props) => {
     <View>
       <ScrollView
         horizontal={true}
-        contentContainerStyle={{width: `${100 * intervals}%`}}
+        contentContainerStyle={{
+          width: `${100 * intervals}%`,
+        }}
         showsHorizontalScrollIndicator={false}
-       
         decelerationRate="fast"
         onContentSizeChange={(w, h) => {
           init(w);
         }}
-        onScroll={data => {
+        onScroll={(data) => {
           setInterval(getInterval(data.nativeEvent.contentOffset.x));
         }}
         scrollEventThrottle={200}
@@ -82,29 +82,32 @@ const Carousel = (props) => {
         ))}
       </ScrollView>
       <View style={styles.dotContainer}>
-      {items.map((item, index) => {
-        return <View key={index} style={ index === interval - 1 ? selectedDot :  styles.dot} />
-         
-      })}
+        {items.map((item, index) => {
+          return (
+            <View
+              key={index}
+              style={index === interval - 1 ? selectedDot : styles.dot}
+            />
+          );
+        })}
       </View>
-      
     </View>
   );
 };
 
 Carousel.propTypes = {
-  itemsPerInterval: PropTypes.number.isRequired
-}
+  itemsPerInterval: PropTypes.number.isRequired,
+};
 
 export default Carousel;
 
 const styles = StyleSheet.create({
   carouselItem: {
-    height: 200,
+    height: verticalScale(200),
     width: widthScreen,
   },
   textContainer: {
-    height: 200,
+    height: verticalScale(200),
     justifyContent: 'center',
   },
   title: {
@@ -121,24 +124,24 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   dotContainer: {
-    height: 50,
+    height: verticalScale(20),
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingHorizontal: 10,
   },
   dot: {
-    height: 7,
-    width: 7,
+    height: verticalScale(6),
+    width: scale(6),
     borderRadius: 7 / 2,
     backgroundColor: COLORS.gray,
     margin: 5,
-    opacity: .4
+    opacity: 0.4,
   },
   selectedDot: {
     backgroundColor: COLORS.white,
     transform: [{scale: 1.5}],
-    opacity: .7
+    opacity: 0.7,
   },
 });
 

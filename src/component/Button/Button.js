@@ -6,7 +6,7 @@ import {COLORS} from '../../utilities/constans';
 import LottieView from 'lottie-react-native';
 import {isAppLoadingSelector} from '../../store/selector';
 import type {Props, InitailStyle, Opacity} from './BtnType';
-
+import {scale, verticalScale} from '../../utilities/screenUtilities';
 //@flow
 const INITAIL_STYLE_BTN: InitailStyle = {
   backgroundColor: COLORS.blackLight,
@@ -30,7 +30,6 @@ const UIButton = (props: Props) => {
   const opacityStyle: Opacity = {
     opacity: isDisable || isLoading ? 0.5 : 1,
   };
-
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -65,12 +64,12 @@ export default UIButton;
 
 const styles = StyleSheet.create({
   containerButton: {
-    minHeight: 44,
-    minWidth: 150,
+    minHeight: verticalScale(44),
+    minWidth: scale(150),
     justifyContent: 'center',
     paddingVertical: 8,
     shadowOffset: {
-      height: 2,
+      height: verticalScale(2),
       width: 1,
     },
     shadowColor: COLORS.black,
@@ -89,8 +88,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   lottieConatiner: {
-    height: 40,
-    width: 40,
+    height: verticalScale(40),
+    width: scale(40),
   },
   lottieView: {
     flex: 1,
