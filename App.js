@@ -3,19 +3,14 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
  */
-
 import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   StatusBar,
-  Alert
 } from 'react-native';
-import messaging from '@react-native-firebase/messaging';
 import {Provider, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import { colorSafeAreaSelector } from './src/store/selector'

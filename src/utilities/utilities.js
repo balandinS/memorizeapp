@@ -1,11 +1,14 @@
+// @flow
 import {Platform, Dimensions} from 'react-native';
 import auth from '@react-native-firebase/auth';
+export const OS: string = Platform.OS;
+export const widthScreen: number = Dimensions.get('screen').width;
 
-export const OS = Platform.OS;
-export const widthScreen = Dimensions.get('screen').width
-export const NOOP = () => {};
-
-export function createUserWithEmail(email, password) {
+export const NOOP: function = () => {};
+export function createUserWithEmail(
+  email: string,
+  password: string,
+): Promise<mixed> {
   return new Promise((resolve, reject) => {
     try {
       auth()
@@ -29,7 +32,10 @@ export function createUserWithEmail(email, password) {
   });
 }
 
-export function signinWithEmailAndPassword(email, password) {
+export function signinWithEmailAndPassword(
+  email: string,
+  password: string,
+): Promise<mixed> {
   return new Promise((resolve, reject) => {
     try {
       auth()
@@ -38,15 +44,19 @@ export function signinWithEmailAndPassword(email, password) {
           resolve(response.user);
         })
         .catch((error) => {
-          console.log('signinWithEmailAndPassword' , error.code)
-          if(error.code === 'auth/too-many-requests') {
-            reject('this account has been temporarily disabled due to many failed login')
+          console.log('signinWithEmailAndPassword', error.code);
+          if (error.code === 'auth/too-many-requests') {
+            reject(
+              'this account has been temporarily disabled due to many failed login',
+            );
           }
           if (error.code === 'auth/wrong-password') {
-            reject('The password is invalid or the user does not have a password ');
-          } 
-          if(error.code === 'auth/user-not-found'){
-            reject('User not found')
+            reject(
+              'The password is invalid or the user does not have a password ',
+            );
+          }
+          if (error.code === 'auth/user-not-found') {
+            reject('User not found');
           }
         });
     } catch (error) {

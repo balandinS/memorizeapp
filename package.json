@@ -6,6 +6,10 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "flow": "flow start",
+    "flow stop": "flow stop",
+    "flow status": "flow status",
+    "flow coverage": "flow coverage",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -27,6 +31,7 @@
     "lodash": "^4.17.20",
     "lottie-ios": "3.1.8",
     "lottie-react-native": "^3.5.0",
+    "prettier-eslint": "^12.0.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dev-tools": "^0.0.1",

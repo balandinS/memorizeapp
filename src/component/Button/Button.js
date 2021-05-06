@@ -1,64 +1,65 @@
 import React, {useRef} from 'react';
 import {TouchableOpacity, StyleSheet, View} from 'react-native';
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux';
 import Text from '../Text';
 import {COLORS} from '../../utilities/constans';
 import LottieView from 'lottie-react-native';
-import { isAppLoadingSelector } from '../../store/selector'
-import PropTypes from 'prop-types'
+import {isAppLoadingSelector} from '../../store/selector';
+import type {Props, InitailStyle, Opacity} from './BtnType';
 
-const INITAIL_STYLE_BTN = {
+//@flow
+const INITAIL_STYLE_BTN: InitailStyle = {
   backgroundColor: COLORS.blackLight,
   borderRadius: 30,
   borderWidth: 1,
   borderColor: COLORS.blackLight,
 };
 
-const UIButton = ({
-  contnet = '',
-  icon,
-  onPress,
-  propStyle = INITAIL_STYLE_BTN,
-  textColor,
-  isDisable,
-}) => {
+const UIButton = (props: Props) => {
+  const {
+    contnet = '',
+    icon,
+    onPress,
+    propStyle = INITAIL_STYLE_BTN,
+    textColor,
+    isDisable,
+  } = props;
 
-  const isLoading = useSelector(isAppLoadingSelector)
-  const txtColor = useRef(!!textColor ? textColor : COLORS.white);
-  
+  const isLoading = useSelector(isAppLoadingSelector);
+  const txtColor = useRef(textColor ? textColor : COLORS.white);
+  const opacityStyle: Opacity = {
+    opacity: isDisable || isLoading ? 0.5 : 1,
+  };
+
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.containerButton, propStyle, {opacity: isDisable || isLoading ? .5 : 1}]}
+      style={[styles.containerButton, propStyle, opacityStyle]}
       disabled={isDisable || isLoading}>
       <View style={styles.btnCotnent}>
         {!!contnet && (
-            <View style={styles.btnCotnent}>
-                <Text style={[styles.text, {color: txtColor.current}]}>{contnet}</Text>
-                {isLoading && (
-                    <View style={{height: 40, width: 40}}>
-                       <LottieView autoPlay loop style={{flex: 1}} source={require('../../assessts/animations/loadingAnimation.json')}/>
-                    </View>
-                )}
-               
-            </View>   
+          <View style={styles.btnCotnent}>
+            <Text style={[styles.text, {color: txtColor.current}]}>
+              {contnet}
+            </Text>
+
+            {isLoading && (
+              <View style={styles.lottieConatiner}>
+                <LottieView
+                  autoPlay
+                  loop
+                  style={styles.lottieView}
+                  source={require('../../assessts/animations/loadingAnimation.json')}
+                />
+              </View>
+            )}
+          </View>
         )}
         {icon && icon}
-        
       </View>
     </TouchableOpacity>
   );
 };
-
-UIButton.propTypes = {
-   contnet: PropTypes.string,
-   onPress: PropTypes.func.isRequired,
-   textColor: PropTypes.string,
-   icon: PropTypes.elementType,
-   propStyle: PropTypes.object,
-   isDisable: PropTypes.bool
-
-}
 
 export default UIButton;
 
@@ -85,6 +86,13 @@ const styles = StyleSheet.create({
   btnCotnent: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  lottieConatiner: {
+    height: 40,
+    width: 40,
+  },
+  lottieView: {
+    flex: 1,
   },
 });
