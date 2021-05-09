@@ -5,6 +5,7 @@ import type {
   SigninContent,
   Modals,
   ItemCarousel,
+  TabsNames,
 } from './Type';
 
 export const COLORS: Colors = {
@@ -49,7 +50,7 @@ export const MODAL_TYPES: Modals = {
   twoBtnHor: 'TWO_HORIZNTAL_BUTTON_MODAL',
   oneBtnVer: 'ONE_BUTTON_MODAL',
 };
-
+//Carousel
 export const CAROUSEL_DATA: Array<ItemCarousel> = [
   {
     title: 'Women Collection',
@@ -64,3 +65,12 @@ export const CAROUSEL_DATA: Array<ItemCarousel> = [
     text: 'Rich selection for choosing clothes',
   },
 ];
+
+//Home Screen toptab.
+export const TABS_NAME: TabsNames = {
+  tabWomen: 'WOMEM',
+  tabMen: 'MEM',
+  tabChildren: 'CHILDREN',
+  tabShoes: 'SHOES',
+  tabAccessoties: 'ACCESSORIES',
+};

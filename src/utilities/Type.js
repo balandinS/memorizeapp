@@ -41,3 +41,11 @@ export type ItemCarousel = {
   title: string,
   text: string,
 };
+
+export type TabsNames = {
+  tabWomen: string,
+  tabMen: string,
+  tabChildren: string,
+  tabShoes: string,
+  tabAccessoties: string,
+};
