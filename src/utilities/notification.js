@@ -94,7 +94,9 @@ function FCMRegister() {
       }
     });
     messaging().onTokenRefresh((FCMtoken) => {
-      if (FCMtoken) onRegister(FCMtoken);
+      if (FCMtoken) {
+        onRegister(FCMtoken);
+      }
     });
   };
 

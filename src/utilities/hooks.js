@@ -1,20 +1,21 @@
 import {useEffect, useRef, useCallback, useState} from 'react';
 import {Animated, Easing} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {fillSafeAreaColor} from '../store/ui/UiAction';
-import {colorSafeAreaSelector, isAppLoadingSelector} from '../store/selector';
+import {colorSafeAreaSelector} from '../store/selector';
 
 //Fill color Safe area
 export function useColorSafeArea(color) {
   const dispatch = useDispatch();
   const colorSafeAre = useSelector(colorSafeAreaSelector);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const colored = useCallback(() => dispatch(fillSafeAreaColor(color)), [
     colorSafeAre,
   ]);
   useEffect(() => {
     console.log('rernder');
     colored();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorSafeAre]);
 }
 //opacity anime
