@@ -1,20 +1,9 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import {COLORS} from '../../utilities/constans';
-import {widthScreen} from '../../utilities/utilities';
+import React, {useState, useRef} from 'react';
+import {View, ScrollView} from 'react-native';
+import {CAROUSEL_DATA} from '../../utilities/constans';
 import PropTypes from 'prop-types';
-import {scale, verticalScale} from '../../utilities/screenUtilities';
-const ItemCarousel = (props) => {
-  console.log('verticalScale(150) -->', (414 / 360) * 200);
-  return (
-    <View style={styles.carouselItem}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.text}>{props.text}</Text>
-      </View>
-    </View>
-  );
-};
+import CarouselItem from './CarouselComponents/CarouselItem';
+import Bullets from './CarouselComponents/Bullets';
 
 const Carousel = (props) => {
   const itemsPerInterval =
@@ -22,20 +11,7 @@ const Carousel = (props) => {
   const [intervals, setIntervals] = useState(1);
   const [interval, setInterval] = useState(1);
   const [width, setWidth] = useState(0);
-  const [items, setItems] = useState([
-    {
-      title: 'Women Collection',
-      text: 'Rich selection for choosing clothes',
-    },
-    {
-      title: 'Men Collection',
-      text: 'Rich selection for choosing clothes',
-    },
-    {
-      title: 'Child Collection',
-      text: 'Rich selection for choosing clothes',
-    },
-  ]);
+  const items = useRef(CAROUSEL_DATA).current;
 
   const init = (w) => {
     setWidth(w);
@@ -46,11 +22,9 @@ const Carousel = (props) => {
   const getInterval = (offset) => {
     for (let i = 1; i <= intervals; i++) {
       if (offset < (width / intervals) * i) {
-        console.log('offset < (width / intervals) --> ', intervals);
         return i;
       }
       if (i === intervals) {
-        console.log('offset == (width / intervals) --> ', intervals);
         return i;
       }
     }
@@ -73,24 +47,10 @@ const Carousel = (props) => {
         scrollEventThrottle={200}
         pagingEnabled>
         {items.map((item, index) => (
-          <ItemCarousel
-            key={index}
-            title={item.title}
-            text={item.text}
-            isSelected={item.isSelected}
-          />
+          <CarouselItem key={index} title={item.title} text={item.text} />
         ))}
       </ScrollView>
-      <View style={styles.dotContainer}>
-        {items.map((item, index) => {
-          return (
-            <View
-              key={index}
-              style={index === interval - 1 ? selectedDot : styles.dot}
-            />
-          );
-        })}
-      </View>
+      <Bullets interval={interval} items={items} />
     </View>
   );
 };
@@ -100,49 +60,3 @@ Carousel.propTypes = {
 };
 
 export default Carousel;
-
-const styles = StyleSheet.create({
-  carouselItem: {
-    height: verticalScale(200),
-    width: widthScreen,
-  },
-  textContainer: {
-    height: verticalScale(200),
-    justifyContent: 'center',
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: COLORS.white,
-    padding: 5,
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '500',
-    color: COLORS.white,
-  },
-  dotContainer: {
-    height: verticalScale(20),
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-  },
-  dot: {
-    height: verticalScale(6),
-    width: scale(6),
-    borderRadius: 7 / 2,
-    backgroundColor: COLORS.gray,
-    margin: 5,
-    opacity: 0.4,
-  },
-  selectedDot: {
-    backgroundColor: COLORS.white,
-    transform: [{scale: 1.5}],
-    opacity: 0.7,
-  },
-});
-
-const selectedDot = StyleSheet.flatten([styles.dot, styles.selectedDot]);
