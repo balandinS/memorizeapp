@@ -4,15 +4,15 @@ import {StyleSheet, View} from 'react-native';
 import {COLORS} from '../../utilities/constans';
 import TabCategories from '../../component/TabCategories';
 import HeaderWithImage from '../../component/HeaderWithImage';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Title from '../../component/Title';
 import {selectedTabSelector} from '../../store/selector';
 import {verticalScale} from '../../utilities/screenUtilities';
+import SliderSettings from '../../component/SliderSettings';
 const HomeScreen = () => {
   const selectedTab = useSelector(selectedTabSelector);
   return (
     <View style={styles.container}>
-      <View style={{height: verticalScale(250)}}>
+      <View style={styles.imageContainer}>
         <HeaderWithImage />
       </View>
       <View style={styles.titleConatiner}>
@@ -20,9 +20,7 @@ const HomeScreen = () => {
           title={`${selectedTab}'s Clothing`}
           subtitle="variety to choose"
         />
-        <View>
-          <Icon name="sliders" color={COLORS.graydark} size={22} />
-        </View>
+        <SliderSettings />
       </View>
       <TabCategories />
     </View>
@@ -35,6 +33,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
+  },
+  imageContainer: {
+    height: verticalScale(250),
   },
   titleConatiner: {
     flexDirection: 'row',

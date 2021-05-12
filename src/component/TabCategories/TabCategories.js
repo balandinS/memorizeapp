@@ -10,13 +10,10 @@ import {fetchCategoriesAction} from '../../store/HomeScreen/HomeAction';
 import SubCategorie from '../SubCategorie';
 import PropTypes from 'prop-types';
 import {scale, verticalScale} from '../../utilities/screenUtilities';
+import ProductList from '../ProductList';
 const Tab = createMaterialTopTabNavigator();
 
 const TAB_WOMEM = 'WOMEM';
-const TAB_MEN = 'MEM';
-const TAB_CHILDREN = 'CHILDREN';
-const TAB_SHOES = 'SHOES';
-const TAB_ACCESSORIES = 'ACCESSORIES';
 
 const RenderTab = (props) => {
   const isFocus = useIsFocused();
@@ -25,45 +22,15 @@ const RenderTab = (props) => {
     dispatch(fetchCategoriesAction(props.data.tabLabel));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
-
   useEffect(() => {
     if (isFocus) {
       fetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFocus]);
-
-  const renderSubcategories = () => {
-    const {values} = props.data;
-    if (values.subcategories.length === 0) {
-      return null;
-    }
-
-    return (
-      <View style={{height: verticalScale(200)}}>
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          decelerationRate="fast"
-          scrollEventThrottle={200}>
-          {values.subcategories.map((item) => {
-            return (
-              <View
-                key={`${props.data.tabType}_${item.name}`}
-                style={styles.subcategoriesContainer}>
-                <SubCategorie subcategorie={item} />
-              </View>
-            );
-          })}
-        </ScrollView>
-      </View>
-    );
-  };
   return (
     <View style={{backgroundColor: COLORS.white, flex: 1}}>
-      {renderSubcategories()}
-      <Text>{JSON.stringify(props)}</Text>
+      <ProductList data={props.data} />
     </View>
   );
 };

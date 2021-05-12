@@ -1,6 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {COLORS} from '../../utilities/constans';
+
 const SliderSettings = () => {
   return (
     <View>
@@ -10,5 +12,3 @@ const SliderSettings = () => {
 };
 
 export default SliderSettings;
-
-const styles = StyleSheet.create({});
