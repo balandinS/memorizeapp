@@ -4,12 +4,14 @@ import {COLORS} from '../../utilities/constans';
 type Props = {
   title: string,
   subtitle: string,
+  size: number,
 };
 const Title = (props: Props) => {
-  const {title, subtitle} = props;
+  const {title, subtitle, size = 26} = props;
+  const fontSize = {fontSize: size};
   return (
     <View style={styles.conatiner}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={StyleSheet.flatten([styles.title, fontSize])}>{title}</Text>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
     </View>
   );
@@ -23,7 +25,6 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   title: {
-    fontSize: 26,
     color: COLORS.black,
     fontWeight: '600',
   },
