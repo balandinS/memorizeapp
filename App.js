@@ -5,30 +5,15 @@
  * @format
  */
 import React, {useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, StatusBar} from 'react-native';
 import {Provider, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import { colorSafeAreaSelector } from './src/store/selector'
+import {colorSafeAreaSelector} from './src/store/selector';
 import ReduxStore from './src/store';
-import Router from './src/routers'
-import { COLORS } from './src/utilities/constans';
-import MoadalPopup from './src/component/ModalPopup'
-const SafeAreaViewGroup = (props) => {
-  const safeAreaColor = useSelector(colorSafeAreaSelector)
-  return (
-    <>
-      <SafeAreaView style={[styles.safeTop, {backgroundColor: safeAreaColor}]} />
-      <SafeAreaView style={[styles.safeBottom, {backgroundColor: safeAreaColor}]}>
-         {props.children}
-      </SafeAreaView>
-    </>
-  )
-}
+import Router from './src/routers';
+import {COLORS} from './src/utilities/constans';
+import MoadalPopup from './src/component/ModalPopup';
+
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
@@ -41,7 +26,7 @@ const App: () => React$Node = () => {
       />
       <Provider store={ReduxStore.store}>
         <PersistGate loading={null} persistor={ReduxStore.persistor}>
-          <SafeAreaViewGroup >
+          <SafeAreaViewGroup>
             <Router />
             <MoadalPopup />
           </SafeAreaViewGroup>
@@ -50,7 +35,20 @@ const App: () => React$Node = () => {
     </View>
   );
 };
-
+const SafeAreaViewGroup = (props) => {
+  const safeAreaColor = useSelector(colorSafeAreaSelector);
+  return (
+    <>
+      <SafeAreaView
+        style={[styles.safeTop, {backgroundColor: safeAreaColor}]}
+      />
+      <SafeAreaView
+        style={[styles.safeBottom, {backgroundColor: safeAreaColor}]}>
+        {props.children}
+      </SafeAreaView>
+    </>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
