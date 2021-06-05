@@ -7,6 +7,7 @@ import type {InitalState} from './HomeTyped';
 const INITAIL_STATE = {
   selectedCategorie: 'Women',
   dataTabs: tabsValues,
+  explorData: [],
 };
 
 export default (
