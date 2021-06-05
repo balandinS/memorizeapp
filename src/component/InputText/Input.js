@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState, useEffect} from 'react';
 import {
   StyleSheet,
@@ -9,7 +10,7 @@ import {
 } from 'react-native';
 import Text from '../Text';
 import {COLORS} from '../../utilities/constans';
-import {SIGNIN, SIGNUP} from '../../routers/types';
+import {SIGNIN} from '../../routers/types';
 import {useRoute} from '@react-navigation/native';
 
 const Input = (props) => {
@@ -71,7 +72,10 @@ const Input = (props) => {
           value={props.value}
           onEndEditing={props.onEndEditing}
           style={styles.input}
-          onChangeText={(text) => props.onChangeText(text)}
+          onChangeText={(text) => {
+            props.onChangeText(text);
+            props.handleSubmit && props.handleSubmit();
+          }}
         />
         {props.isPassword && route.name === SIGNIN && (
           <TouchableOpacity
@@ -81,7 +85,7 @@ const Input = (props) => {
           </TouchableOpacity>
         )}
       </View>
-      {props.isErrMsg.isValid && props.isErrMsg.msg && (
+      {props.isErrMsg?.isValid && props.isErrMsg?.msg && (
         <Text style={styles.errorMsg}>*{props.isErrMsg.msg}</Text>
       )}
     </View>
