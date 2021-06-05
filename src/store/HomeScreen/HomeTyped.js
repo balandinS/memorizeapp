@@ -15,4 +15,5 @@ type DataTabs = {
 export type InitalState = {
   selectedCategorie: string,
   dataTabs: Array<DataTabs>,
+  explorData: Array<Subcategories>,
 };
