@@ -1,6 +1,7 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import HomeScreen from '../screen/HomeScreen';
+import ExplorerScreen from '../screen/ExplorerScreen';
 import * as TYPES from './types';
 import {COLORS} from '../utilities/constans';
 import {barStyleTab} from './config';
@@ -41,7 +42,7 @@ function HomeStack() {
           },
         }}
         name={TYPES.EXPLORE_SCREEN}
-        component={HomeScreen}
+        component={ExplorerScreen}
       />
       <Tab.Screen
         options={{
