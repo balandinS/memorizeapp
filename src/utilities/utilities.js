@@ -65,3 +65,14 @@ export function signinWithEmailAndPassword(
     }
   });
 }
+
+export const debounce = (fn: function, ms: number): function => {
+  let timeout;
+  return function () {
+    const fnCall = () => {
+      fn.apply(this, arguments);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(fnCall, ms);
+  };
+};
