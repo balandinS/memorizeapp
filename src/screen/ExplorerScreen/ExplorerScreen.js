@@ -1,26 +1,29 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text, LayoutAnimation} from 'react-native';
+import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {Formik} from 'formik';
 import Title from '../../component/Title';
 import InputText from '../../component/InputText';
 import {COLORS} from '../../utilities/constans';
 import {scale, verticalScale} from '../../utilities/screenUtilities';
-
+import {debounce} from '../../utilities/utilities';
+import {selectedExplorerList} from '../../store/selector';
 const ExplorerScreen = () => {
-  const debounce = (fn, ms) => {
-    let timeout;
-    return function () {
-      const fnCall = () => {
-        fn.apply(this, arguments);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(fnCall, ms);
-    };
-  };
+  const exploreList = useSelector(selectedExplorerList);
+  const [list, setList] = React.useState(exploreList);
   const submit = debounce(onSubmitAction, 200);
   function onSubmitAction(values) {
-    console.log('[debounce]', values);
+    if (values.search === '') {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      setList(exploreList);
+    } else {
+      const filteredList = exploreList.filter((item) =>
+        item.name.includes(values.search),
+      );
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      setList(filteredList);
+    }
   }
   return (
     <View style={styles.container}>
@@ -51,6 +54,11 @@ const ExplorerScreen = () => {
             )}
           </Formik>
         </View>
+      </View>
+      <View>
+        {list.map((item) => (
+          <Text key={`key_${item.image}`}>{JSON.stringify(item)}</Text>
+        ))}
       </View>
       <View />
     </View>

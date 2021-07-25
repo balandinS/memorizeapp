@@ -24,7 +24,7 @@ const RootNavigator = () => {
       headerMode="float"
       screenOptions={{...FadeInOutAnimation}}>
       {!userInfo.refreshToken ? (
-        <>
+        <React.Fragment>
           <RootStack.Screen
             name={TYPES.SIGNIN}
             options={{headerShown: false}}
@@ -40,15 +40,13 @@ const RootNavigator = () => {
             options={forgotPasswordOptionNavigate}
             component={ForgotPasswordScreen}
           />
-        </>
+        </React.Fragment>
       ) : (
-        <>
-          <RootStack.Screen
-            name={TYPES.APP_STACK}
-            options={{headerShown: false}}
-            component={AppStack}
-          />
-        </>
+        <RootStack.Screen
+          name={TYPES.APP_STACK}
+          options={{headerShown: false}}
+          component={AppStack}
+        />
       )}
     </RootStack.Navigator>
   );

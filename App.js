@@ -4,8 +4,15 @@
  *
  * @format
  */
-import React, {useEffect} from 'react';
-import {SafeAreaView, StyleSheet, View, StatusBar} from 'react-native';
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  StatusBar,
+  Platform,
+  UIManager,
+} from 'react-native';
 import {Provider, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {colorSafeAreaSelector} from './src/store/selector';
@@ -13,7 +20,11 @@ import ReduxStore from './src/store';
 import Router from './src/routers';
 import {COLORS} from './src/utilities/constans';
 import MoadalPopup from './src/component/ModalPopup';
-
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>

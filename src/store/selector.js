@@ -15,3 +15,4 @@ export const modalCancelBtnSelector = (state) =>
 export const dataTabsSelector = (state) => state.HomeReducer.dataTabs;
 export const selectedTabSelector = (state) =>
   state.HomeReducer.selectedCategorie;
+export const selectedExplorerList = (state) => state.HomeReducer.explorData;
