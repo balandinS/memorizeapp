@@ -56,15 +56,14 @@ export default (state = intailState, action) => {
     case CLEAR_USER_DETAILS: {
       return {...intailState};
     }
-    // case REHYDRATE:
-    //   console.log('persist');
-    //   if(action?.payload?.UserReducer){
-    //     return {
-    //       ...action.payload.UserReducer,
-    //     };
-    //   } else{
-    //     return state
-    //   }
+    case REHYDRATE:
+      console.log('persist');
+      if (action?.payload?.UserReducer) {
+        return {
+          ...action.payload.UserReducer,
+        };
+      }
+      return state;
     default:
       return state;
   }

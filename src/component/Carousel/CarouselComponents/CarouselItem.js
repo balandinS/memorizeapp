@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: widthScreen,
   },
   textContainer: {
-    height: verticalScale(200),
+    height: verticalScale(170),
     justifyContent: 'center',
   },
   title: {

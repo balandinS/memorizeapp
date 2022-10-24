@@ -27,6 +27,8 @@ export const COLORS: Colors = {
   graylightdark: 'rgb(139, 139, 143)',
   black_50: 'rgba(17 ,10, 8, .5)',
   gray_navigation: 'rgb(199, 199, 199)',
+  gray_navigation_30: 'rgba(199, 199, 199, 0.3)',
+  gray_30: 'rgba(247,247,247, 0.1)',
 };
 
 export const SIGNIN_SCREEN_CONTENT: SignupContent = {

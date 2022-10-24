@@ -29,9 +29,14 @@ const modalError = function* (modalContent) {
 
 const loginSocailFacebook = function* () {
   yield put(startLoadingAppAction());
-  const {user} = yield call(accessToken);
-  yield put(signinAction(user._user));
-  yield put(endLoadingAppAction());
+  try {
+    const {user} = yield call(accessToken);
+    yield put(signinAction(user._user));
+  } catch (error) {
+    yield call(modalError, error);
+  } finally {
+    yield put(endLoadingAppAction());
+  }
 };
 
 const logoutSocailFacebook = function* () {

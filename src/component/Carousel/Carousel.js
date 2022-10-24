@@ -30,7 +30,7 @@ const Carousel = (props) => {
     }
   };
   return (
-    <View>
+    <View style={{height: props.height}}>
       <ScrollView
         horizontal={true}
         contentContainerStyle={{

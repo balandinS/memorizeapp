@@ -24,7 +24,7 @@ export default Bullets;
 
 const styles = StyleSheet.create({
   dotContainer: {
-    height: verticalScale(20),
+    height: verticalScale(40),
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',

@@ -2,6 +2,7 @@ import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import HomeScreen from '../screen/HomeScreen';
 import ExplorerScreen from '../screen/ExplorerScreen';
+import BookedScreen from '../screen/BookedScreen';
 import * as TYPES from './types';
 import {COLORS} from '../utilities/constans';
 import {barStyleTab} from './config';
@@ -55,7 +56,7 @@ function HomeStack() {
           },
         }}
         name={TYPES.BOOKED_SCREEN}
-        component={HomeScreen}
+        component={BookedScreen}
       />
       <Tab.Screen
         options={{

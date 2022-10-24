@@ -5,7 +5,7 @@ type Window = {
   height: number,
 };
 
-const window: Window = Dimensions.get('window');
+export const window: Window = Dimensions.get('window');
 const guidelineBaseWidth: number = 350;
 const guidelineBaseHeight: number = 680;
 

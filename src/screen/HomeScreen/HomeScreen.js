@@ -13,7 +13,9 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <HeaderWithImage />
+        <HeaderWithImage
+          src={require('../../assessts/images/headerImagejpg.jpg')}
+        />
       </View>
       <View style={styles.titleConatiner}>
         <Title
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
   },
   imageContainer: {
-    height: verticalScale(250),
+    height: verticalScale(200),
   },
   titleConatiner: {
     flexDirection: 'row',
@@ -43,6 +45,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     padding: 5,
-    height: verticalScale(55),
+    height: verticalScale(60),
   },
 });

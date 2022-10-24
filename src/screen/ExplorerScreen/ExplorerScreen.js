@@ -9,6 +9,7 @@ import {COLORS} from '../../utilities/constans';
 import {scale, verticalScale} from '../../utilities/screenUtilities';
 import {debounce} from '../../utilities/utilities';
 import {selectedExplorerList} from '../../store/selector';
+import CardsList from '../../component/ExplorerList';
 const ExplorerScreen = () => {
   const exploreList = useSelector(selectedExplorerList);
   const [list, setList] = React.useState(exploreList);
@@ -55,10 +56,8 @@ const ExplorerScreen = () => {
           </Formik>
         </View>
       </View>
-      <View>
-        {list.map((item) => (
-          <Text key={`key_${item.image}`}>{JSON.stringify(item)}</Text>
-        ))}
+      <View style={{flex: 1}}>
+        <CardsList title="Sergey" subtitle="sdsdsdsdf" />
       </View>
       <View />
     </View>
